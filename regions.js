@@ -5,6 +5,7 @@ var cheerio = require('cheerio');
 
 var funds = [];
 var promiseFunds = [];
+var results = {}
 
 funds.push({url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000MKIO&tab=3"})
 funds.push({url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000HLBC&tab=3"})
@@ -18,6 +19,8 @@ function parseFundRegions(url) {
 	request({
 	    uri: url,
 	}, function(error, response, body) {
+	    // TODO: get source from URL (ex.: morningstarg) and
+	    // call the require parser
 	    var $ = cheerio.load(body);
 	    var regions=[]
 	    $(".portfolioRegionalBreakdownTable tr").slice(3).each(function() {
@@ -43,8 +46,18 @@ funds.forEach(function(fund) {
     promiseFunds.push(parseFundRegions(fund.url));
 })
 
+
 Promise.all(promiseFunds).then(function(values) {
-    console.warn(values);
+    // aggregate data
+    values.forEach(function(dataFromFund) {
+	dataFromFund.forEach(function(data) {
+	    if (results[data.region] === undefined) {
+		results[data.region] = data.percentage
+	    } else {
+		results[data.region] += data.percentage
+	    }
+	})
+    })
+
+    console.warn(results);
 })
-
-
