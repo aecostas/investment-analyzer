@@ -7,17 +7,41 @@ var funds = [];
 var promiseFunds = [];
 var results = {}
 
-funds.push({url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000MKIO&tab=3"})
-funds.push({url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000HLBC&tab=3"})
-funds.push({url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F0GBR04SLW&tab=3"})
-funds.push({url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000HLB6&tab=3"})
-funds.push({url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F0GBR04G6K&tab=3"})
-funds.push({url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F000001AAQ&tab=3"})
+funds.push({
+    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000MKIO&tab=3",
+    amount: 1000,
+    percentage: 20,
+})
+funds.push({
+    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000HLBC&tab=3",
+    amount: 1000,
+    percentage: 10,
+})
+funds.push({
+    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F0GBR04SLW&tab=3",
+    amount: 3000,
+    percentage: 10,
+})
+funds.push({
+    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000HLB6&tab=3",
+    amount: 5000,
+    percentage: 15,
+})
+funds.push({
+    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F0GBR04G6K&tab=3",
+    amount:2000,
+    percentage: 20,
+})
+funds.push({
+    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F000001AAQ&tab=3",
+    amount:1000,
+    percentage: 35
+})
 
-function parseFundRegions(url) {
+function parseFundRegions(fund) {
     return new Promise(function(resolve, reject) {
 	request({
-	    uri: url,
+	    uri: fund.url,
 	}, function(error, response, body) {
 	    // TODO: get source from URL (ex.: morningstarg) and
 	    // call the require parser
@@ -29,7 +53,7 @@ function parseFundRegions(url) {
 		try {
 		    region = {
 			"region": children[0].children[0].data,
-			"percentage": parseFloat(children[1].children[0].data.replace(',','.')),
+			"percentage": parseFloat(children[1].children[0].data.replace(',','.')) * fund.percentage/100,
 		    }
 		    regions.push(region);
 		} catch(err) {
@@ -40,10 +64,12 @@ function parseFundRegions(url) {
 	    resolve(regions);
 	})
     })// Promise
-}
+
+}// parseFundRegions
+
 
 funds.forEach(function(fund) {
-    promiseFunds.push(parseFundRegions(fund.url));
+    promiseFunds.push(parseFundRegions(fund));
 })
 
 
