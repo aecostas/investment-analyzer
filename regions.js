@@ -5,7 +5,23 @@ var cheerio = require('cheerio');
 
 var funds = [];
 var promiseFunds = [];
-var results = {}
+var results = {};
+
+var regionCodes = {};
+
+regionCodes['Estados Unidos'] = 'USA';
+regionCodes['Iberoamérica'] = 'LATAM';
+regionCodes['Reino Unido'] = 'GB';
+regionCodes['Canadá'] = 'CANADA';
+regionCodes['Zona Euro'] = 'EUROZONE';
+regionCodes['Europe - ex Euro'] = 'EUROEXEURO';
+regionCodes['África'] = 'AFRICA';
+regionCodes['Oriente Medio'] = 'MIDDLEEAST';
+regionCodes['Japón'] = 'JAPAN';
+regionCodes['Australasia'] = 'AUSTRALASIA';
+regionCodes['Asia - Desarrollada'] = 'ASIADEVELOPED';
+regionCodes['Asia - Emergente'] = 'ASIAEMERGING';
+regionCodes['Europe emergente'] = 'EUROEMERGING'
 
 funds.push({
     url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000MKIO&tab=3",
@@ -38,6 +54,15 @@ funds.push({
     percentage: 35
 })
 
+function getRegionCode(region) {
+    if (regionCodes[region] ) {
+	return regionCodes[region]
+    } else {
+	return region
+    }
+}
+
+
 function parseFundRegions(fund) {
     return new Promise(function(resolve, reject) {
 	request({
@@ -52,7 +77,7 @@ function parseFundRegions(fund) {
 		var region;
 		try {
 		    region = {
-			"region": children[0].children[0].data,
+			"region": getRegionCode(children[0].children[0].data),
 			"percentage": parseFloat(children[1].children[0].data.replace(',','.')) * fund.percentage/100,
 		    }
 		    regions.push(region);
