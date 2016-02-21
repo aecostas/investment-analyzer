@@ -4,6 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 var funds = [];
+var funds2 = [];
 var promiseFunds = [];
 var results = {};
 
@@ -22,6 +23,12 @@ regionCodes['Australasia'] = 'AUSTRALASIA';
 regionCodes['Asia - Desarrollada'] = 'ASIADEVELOPED';
 regionCodes['Asia - Emergente'] = 'ASIAEMERGING';
 regionCodes['Europe emergente'] = 'EUROEMERGING'
+
+funds2.push({
+    url:"http://localhost:8000/sample.html",
+    amount: 1000,
+    percentage: 100
+});
 
 funds.push({
     url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000MKIO&tab=3",
@@ -54,6 +61,10 @@ funds.push({
     percentage: 35
 })
 
+function getSectorCode(sector) {
+    return sector
+}
+
 function getRegionCode(region) {
     if (regionCodes[region] ) {
 	return regionCodes[region]
@@ -63,6 +74,45 @@ function getRegionCode(region) {
 }
 
 
+/**
+ * Parse morningstar 'MiCartera' to get the percentage
+ * of sectors
+ * 
+ * @param fund
+ * @return Promise
+ */
+function parseFundSectors(fund) {
+    return new Promise(function(resolve, reject) {
+	request({
+	    uri:fund.url
+	}, function(error, response, body) {
+	    var $ = cheerio.load(body);
+	    var sectors=[]
+	    $(".portfolioSectorBreakdownTable tr").slice(3).each(function() {
+		var children = $(this).children()
+		try {
+		    sector = {
+			"sector": getSectorCode(children[0].children[1].data),
+			"percentage": parseFloat(children[1].children[0].data.replace(',','.')) * fund.percentage/100,
+		    }
+		    sectors.push(sector);
+		} catch(err) {
+		    console.error(err)
+		}
+	    });
+	    resolve(sectors);
+	})
+    }) // Promise
+}// parseFundsSectors
+		       
+
+/**
+ * Parse morningstar 'MiCartera' to get the percentage
+ * of regions
+ * 
+ * @param fund
+ * @return Promise
+ */
 function parseFundRegions(fund) {
     return new Promise(function(resolve, reject) {
 	request({
@@ -85,7 +135,7 @@ function parseFundRegions(fund) {
 		    console.error(err)
 		}
 
-	    });
+	    })
 	    resolve(regions);
 	})
     })// Promise
@@ -93,10 +143,13 @@ function parseFundRegions(fund) {
 }// parseFundRegions
 
 
-funds.forEach(function(fund) {
-    promiseFunds.push(parseFundRegions(fund));
-})
 
+
+funds2.forEach(function(fund) {
+    // TODO: parse only funds not-cached
+//    promiseFunds.push(parseFundRegions(fund));
+    promiseFunds.push(parseFundSectors(fund));
+})
 
 Promise.all(promiseFunds).then(function(values) {
     // aggregate data
