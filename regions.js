@@ -1,4 +1,4 @@
-"use strict;"
+'use strict';
 
 var request = require('request');
 var cheerio = require('cheerio');
@@ -7,6 +7,10 @@ var funds = [];
 var funds2 = [];
 var promiseFunds = [];
 var results = {};
+
+const StorageLayer = require('./StorageLayer');
+
+var cache = new StorageLayer()
 
 var regionCodes = {};
 
@@ -71,7 +75,25 @@ function getRegionCode(region) {
     } else {
 	return region
     }
-}
+}// getRegionCode
+
+
+function retrieveFundData(fund) {
+    
+    return new Promise(function(resolve, reject) {
+	request({
+	    uri:fund.url
+	}, function(error, response, body) {
+	    if (error) {
+		console.warn(error);
+	    }
+	    // TODO: handle errors
+	    fund.body = body
+	    resolve(fund);
+	})
+    })// Promise
+    		
+}// retrieveFundData
 
 
 /**
@@ -82,29 +104,25 @@ function getRegionCode(region) {
  * @return Promise
  */
 function parseFundSectors(fund) {
-    return new Promise(function(resolve, reject) {
-	request({
-	    uri:fund.url
-	}, function(error, response, body) {
-	    var $ = cheerio.load(body);
-	    var sectors=[]
-	    $(".portfolioSectorBreakdownTable tr").slice(3).each(function() {
-		var children = $(this).children()
-		try {
-		    sector = {
-			"sector": getSectorCode(children[0].children[1].data),
-			"percentage": parseFloat(children[1].children[0].data.replace(',','.')) * fund.percentage/100,
-		    }
-		    sectors.push(sector);
-		} catch(err) {
-		    console.error(err)
-		}
-	    });
-	    resolve(sectors);
-	})
-    }) // Promise
+    // TODO: applied percentage afterwards
+    var $ = cheerio.load(fund.body);
+    var sectors=[]
+    $(".portfolioSectorBreakdownTable tr").slice(3).each(function() {
+	var children = $(this).children()
+	try {
+	    var sector = {
+		"sector": getSectorCode(children[0].children[1].data),
+		"percentage": parseFloat(children[1].children[0].data.replace(',','.')) * fund.percentage/100,
+	    }
+	    sectors.push(sector);
+	} catch(err) {
+	    console.error(err)
+	}
+    });
+
+    return sectors;
 }// parseFundsSectors
-		       
+
 
 /**
  * Parse morningstar 'MiCartera' to get the percentage
@@ -114,54 +132,80 @@ function parseFundSectors(fund) {
  * @return Promise
  */
 function parseFundRegions(fund) {
-    return new Promise(function(resolve, reject) {
-	request({
-	    uri: fund.url,
-	}, function(error, response, body) {
-	    // TODO: get source from URL (ex.: morningstarg) and
-	    // call the require parser
-	    var $ = cheerio.load(body);
-	    var regions=[]
-	    $(".portfolioRegionalBreakdownTable tr").slice(3).each(function() {
-		var children = $(this).children();
-		var region;
-		try {
-		    region = {
-			"region": getRegionCode(children[0].children[0].data),
-			"percentage": parseFloat(children[1].children[0].data.replace(',','.')) * fund.percentage/100,
-		    }
-		    regions.push(region);
-		} catch(err) {
-		    console.error(err)
-		}
-
-	    })
-	    resolve(regions);
-	})
-    })// Promise
-
+    var $ = cheerio.load(fund.body);
+    var regions = []
+    $(".portfolioRegionalBreakdownTable tr").slice(3).each(function() {
+	var children = $(this).children();
+	try {
+	    var region = {
+		"region": getRegionCode(children[0].children[0].data),
+		"percentage": parseFloat(children[1].children[0].data.replace(',','.')) * fund.percentage/100,
+	    }
+	    regions.push(region);
+	} catch(err) {
+	    console.error(err)		
+	}
+    });
+    return regions;
 }// parseFundRegions
+							   
 
+    
+// === MAIN LOOP ===
+//  1.- receive list of funds
+//  2.- retrieve the unknown
+//  3.- parse unknown
+//  4.- save data from unknown
+//  5.- join data from unknown and cached
+//  6.- data mining
 
+var unretrievedFunds = []
+var fundData = []
+var results = {}
+results["regions"] = {}
+results["sectors"] = {}
 
-
-funds2.forEach(function(fund) {
-    // TODO: parse only funds not-cached
-//    promiseFunds.push(parseFundRegions(fund));
-    promiseFunds.push(parseFundSectors(fund));
+funds.forEach(function(url) {
+    let fundinfo;
+    if (fundinfo=cache.get(url) === undefined) {
+	unretrievedFunds.push(retrieveFundData(url))
+    } else {
+	fundData.push(fundinfo)
+    }
 })
 
-Promise.all(promiseFunds).then(function(values) {
-    // aggregate data
-    values.forEach(function(dataFromFund) {
-	dataFromFund.forEach(function(data) {
-	    if (results[data.region] === undefined) {
-		results[data.region] = data.percentage
+// TODO: fundbodies should include the fund identifier
+// TODO: refactor this to not chain the actions in this way,
+//       chain the promises instead
+Promise.all(unretrievedFunds).then(function (fundbodies) {
+
+    // parsing and caching
+    fundbodies.forEach(function(fund) {
+	fund.regions = parseFundRegions(fund);
+	fund.sectors = parseFundSectors(fund);
+	fundData.push(fund)
+	cache.set(fund.url, fund)
+    })
+    
+    // mining
+    fundData.forEach(function(dataFromFund) {
+	dataFromFund.regions.forEach(function(data) {
+	    if (results.regions[data.region] === undefined) {
+		results.regions[data.region] = data.percentage
 	    } else {
-		results[data.region] += data.percentage
+		results.regions[data.region] += data.percentage
 	    }
 	})
+
+	dataFromFund.sectors.forEach(function(data) {
+	    if (results.sectors[data.sector] === undefined) {
+		results.sectors[data.sector] = data.percentage
+	    } else {
+		results.sectors[data.sector] += data.percentage
+	    }
+	})
+
     })
 
-    console.warn(results);
+    console.warn(results)
 })
