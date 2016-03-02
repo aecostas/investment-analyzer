@@ -10,7 +10,7 @@ class StorageLayer {
 	//    sectors: Object (ex.: {USA: 16.3, LATAM: 20})
 	//    regions: Object (ex.: {Energy: 20, Technology:12})
 	// }
-	this.cached = []
+	this.cached = {}
     }// constructor
 
 

@@ -2,13 +2,16 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
-
+var express = require('express');
+var app = express()
 var funds = [];
 var funds2 = [];
 var promiseFunds = [];
 var results = {};
 
 const StorageLayer = require('./StorageLayer');
+
+//app.use(bodyParser.urlencoded({ extended: false }))
 
 var cache = new StorageLayer()
 
@@ -119,7 +122,7 @@ function getSectorCode(sector) {
  * @return {Promise}
  */
 function retrieveFundData(fund) {
-    
+
     return new Promise(function(resolve, reject) {
 	request({
 	    uri:fund.url
@@ -144,7 +147,6 @@ function retrieveFundData(fund) {
  * @return Promise
  */
 function parseFundSectors(fund) {
-    // TODO: applied percentage afterwards
     var $ = cheerio.load(fund.body);
     var sectors=[]
     $(".portfolioSectorBreakdownTable tr").slice(3).each(function() {
@@ -190,62 +192,81 @@ function parseFundRegions(fund) {
 }// parseFundRegions
 							   
 
+function performAnalysis() {    
+    // === MAIN LOOP ===
+    //  1.- receive list of funds
+    //  2.- retrieve the unknown
+    //  3.- parse unknown
+    //  4.- save data from unknown
+    //  5.- join data from unknown and cached
+    //  6.- data mining
+    var unretrievedFunds = []
+    var fundData = []
+    var results = {}
+
+    return new Promise(function(resolve, reject) {    
+	results["regions"] = {}
+	results["sectors"] = {}
+
+	funds.forEach(function(url) {
+	    let fundinfo;
+	    if (fundinfo=cache.get(url) === undefined) {
+		unretrievedFunds.push(retrieveFundData(url))
+	    } else {
+		fundData.push(fundinfo)
+	    }
+	})
+	
+	// TODO: fundbodies should include the fund identifier
+	// TODO: refactor this to not chain the actions in this way,
+	//       chain the promises instead
+	Promise.all(unretrievedFunds).then(function (fundbodies) {
+	    
+	    // parsing and caching
+	    fundbodies.forEach(function(fund) {
+		fund.regions = parseFundRegions(fund);
+		fund.sectors = parseFundSectors(fund);
+		fundData.push(fund);
+		cache.set(fund.url, fund);
+	    })
+
+	    // mining
+	    fundData.forEach(function(dataFromFund) {
+		dataFromFund.regions.forEach(function(data) {
+		    if (results.regions[data.region] === undefined) {
+			results.regions[data.region] = data.percentage * dataFromFund.percentage/100;
+		    } else {
+			results.regions[data.region] += data.percentage * dataFromFund.percentage/100;
+		    }
+		})
+		
+		dataFromFund.sectors.forEach(function(data) {
+		    if (results.sectors[data.sector] === undefined) {
+			results.sectors[data.sector] = data.percentage * dataFromFund.percentage/100;
+		    } else {
+			results.sectors[data.sector] += data.percentage * dataFromFund.percentage/100;
+		    }
+		})
+	    })
+
+	    resolve(results);
+
+	})
+    })// new Promise
+
+}// performAnalysis
+
+
+app.get('/dummy', function(req, res) {
+     performAnalysis().then(function(data) {
+	res.send(data);
+    })
+});
+
+
+var server = app.listen(8000, function () {
+    var host = server.address().address;
+    var port = server.address().port;
     
-// === MAIN LOOP ===
-//  1.- receive list of funds
-//  2.- retrieve the unknown
-//  3.- parse unknown
-//  4.- save data from unknown
-//  5.- join data from unknown and cached
-//  6.- data mining
-
-var unretrievedFunds = []
-var fundData = []
-var results = {}
-results["regions"] = {}
-results["sectors"] = {}
-
-funds.forEach(function(url) {
-    let fundinfo;
-    if (fundinfo=cache.get(url) === undefined) {
-	unretrievedFunds.push(retrieveFundData(url))
-    } else {
-	fundData.push(fundinfo)
-    }
-})
-
-// TODO: fundbodies should include the fund identifier
-// TODO: refactor this to not chain the actions in this way,
-//       chain the promises instead
-Promise.all(unretrievedFunds).then(function (fundbodies) {
-
-    // parsing and caching
-    fundbodies.forEach(function(fund) {
-	fund.regions = parseFundRegions(fund);
-	fund.sectors = parseFundSectors(fund);
-	fundData.push(fund);
-	cache.set(fund.url, fund);
-    })
-
-    // mining
-    fundData.forEach(function(dataFromFund) {
-	dataFromFund.regions.forEach(function(data) {
-	    if (results.regions[data.region] === undefined) {
-		results.regions[data.region] = data.percentage * dataFromFund.percentage/100;
-	    } else {
-		results.regions[data.region] += data.percentage * dataFromFund.percentage/100;
-	    }
-	})
-
-	dataFromFund.sectors.forEach(function(data) {
-	    if (results.sectors[data.sector] === undefined) {
-		results.sectors[data.sector] = data.percentage * dataFromFund.percentage/100;
-	    } else {
-		results.sectors[data.sector] += data.percentage * dataFromFund.percentage/100;
-	    }
-	})
-
-    })
-
-    console.warn(results)
-})
+    console.log('Investment analyzer listening at http://%s:%s', host, port);
+});
