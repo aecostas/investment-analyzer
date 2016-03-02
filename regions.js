@@ -13,6 +13,7 @@ const StorageLayer = require('./StorageLayer');
 var cache = new StorageLayer()
 
 var regionCodes = {};
+var sectorCodes = {};
 
 regionCodes['Estados Unidos'] = 'USA';
 regionCodes['Iberoamérica'] = 'LATAM';
@@ -26,7 +27,19 @@ regionCodes['Japón'] = 'JAPAN';
 regionCodes['Australasia'] = 'AUSTRALASIA';
 regionCodes['Asia - Desarrollada'] = 'ASIADEVELOPED';
 regionCodes['Asia - Emergente'] = 'ASIAEMERGING';
-regionCodes['Europe emergente'] = 'EUROEMERGING'
+regionCodes['Europe emergente'] = 'EUROEMERGING';
+
+sectorCodes['Materiales Básicos'] ='BASICMATERIALS';
+sectorCodes['Consumo Cíclico'] ='CYCLICALCONSUMER';
+sectorCodes['Servicios Financieros'] ='FINANCIAL';
+sectorCodes['Inmobiliario'] ='INMO';
+sectorCodes['Consumo Defensivo'] ='DEFENSIVE';
+sectorCodes['Salud'] ='HEALTH';
+sectorCodes['Servicios Públicos'] ='PUBLICSERVICES';
+sectorCodes['Servicios de Comunicación'] ='COM';
+sectorCodes['Energía'] ='ENERGY';
+sectorCodes['Industria'] ='INDUSTRY';
+sectorCodes['Tecnología'] ='TECHNOLOGY';
 
 funds2.push({
     url:"http://localhost:8000/sample.html",
@@ -65,10 +78,15 @@ funds.push({
     percentage: 35
 })
 
-function getSectorCode(sector) {
-    return sector
-}
 
+/**
+ * Translates the given string into 
+ * an internal code representing
+ * a sector
+ *
+ * @param {string} sector - Parsed sector
+ * @return {string} Translated string
+ */
 function getRegionCode(region) {
     if (regionCodes[region] ) {
 	return regionCodes[region]
@@ -76,6 +94,23 @@ function getRegionCode(region) {
 	return region
     }
 }// getRegionCode
+
+
+/**
+ * Translates the given string into 
+ * an internal code representing
+ * a sector
+ *
+ * @param {string} sector - Parsed sector
+ * @return {string} Translated string
+ */
+function getSectorCode(sector) {
+    if (sectorCodes[sector] ) {
+	return sectorCodes[sector]
+    } else {
+	return sector
+    }
+}// getSectorCode
 
 
 function retrieveFundData(fund) {
