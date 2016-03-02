@@ -113,6 +113,11 @@ function getSectorCode(sector) {
 }// getSectorCode
 
 
+/**
+ * Retrieve the URL indicated in the fund
+ * @param {Object} fund - fund.url URL to retrieve
+ * @return {Promise}
+ */
 function retrieveFundData(fund) {
     
     return new Promise(function(resolve, reject) {
@@ -147,7 +152,7 @@ function parseFundSectors(fund) {
 	try {
 	    var sector = {
 		"sector": getSectorCode(children[0].children[1].data),
-		"percentage": parseFloat(children[1].children[0].data.replace(',','.')) * fund.percentage/100,
+		"percentage": parseFloat(children[1].children[0].data.replace(',','.'))
 	    }
 	    sectors.push(sector);
 	} catch(err) {
@@ -174,7 +179,7 @@ function parseFundRegions(fund) {
 	try {
 	    var region = {
 		"region": getRegionCode(children[0].children[0].data),
-		"percentage": parseFloat(children[1].children[0].data.replace(',','.')) * fund.percentage/100,
+		"percentage": parseFloat(children[1].children[0].data.replace(',','.')),
 	    }
 	    regions.push(region);
 	} catch(err) {
@@ -218,25 +223,25 @@ Promise.all(unretrievedFunds).then(function (fundbodies) {
     fundbodies.forEach(function(fund) {
 	fund.regions = parseFundRegions(fund);
 	fund.sectors = parseFundSectors(fund);
-	fundData.push(fund)
-	cache.set(fund.url, fund)
+	fundData.push(fund);
+	cache.set(fund.url, fund);
     })
-    
+
     // mining
     fundData.forEach(function(dataFromFund) {
 	dataFromFund.regions.forEach(function(data) {
 	    if (results.regions[data.region] === undefined) {
-		results.regions[data.region] = data.percentage
+		results.regions[data.region] = data.percentage * dataFromFund.percentage/100;
 	    } else {
-		results.regions[data.region] += data.percentage
+		results.regions[data.region] += data.percentage * dataFromFund.percentage/100;
 	    }
 	})
 
 	dataFromFund.sectors.forEach(function(data) {
 	    if (results.sectors[data.sector] === undefined) {
-		results.sectors[data.sector] = data.percentage
+		results.sectors[data.sector] = data.percentage * dataFromFund.percentage/100;
 	    } else {
-		results.sectors[data.sector] += data.percentage
+		results.sectors[data.sector] += data.percentage * dataFromFund.percentage/100;
 	    }
 	})
 
