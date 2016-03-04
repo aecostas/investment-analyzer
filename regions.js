@@ -11,12 +11,27 @@ var results = {};
 
 const StorageLayer = require('./StorageLayer');
 
-//app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static('public'));
 
 var cache = new StorageLayer()
 
 var regionCodes = {};
 var sectorCodes = {};
+var coords = {}
+
+coords['USA'] = {lat: 42.2333, lng: -8.7166, count: 3};
+coords['LATAM'] = {lat: -14.235004, lng: -51.925280, count: 3};
+coords['GB'] = {lat: 51.507351, lng: -0.127758, count:3}; 
+coords['CANADA'] = {lat: 56.130366, lng: -106.346771, count: 3}; 
+coords['EUROZONE'] = {lat: 46.227638, lng: 2.213749, count :3}; 
+coords['EUROEXEURO'] = {}; 
+coords['AFRICA'] = {lat: -8.783195, lng: 34.508523, count:3}; 
+coords['MIDDLEEAST'] = {lat: 29.298528, lng: 42.550960, count:3}; 
+coords['JAPAN'] = {lat: 36.204824, lng: 138.252924, count:3}; 
+coords['AUSTRALASIA'] = {lat: -29.532804, lng: 145.491477, count: 3}; 
+coords['ASIADEVELOPED'] = {lat: 23.697810, lng: 120.960515, count: 3}; 
+coords['ASIAEMERGING'] = {lat: 27.514162, lng: 90.433601, count:3}; 
+coords['EUROEMERGING'] = {lat: 51.919438, lng: 19.145136, count:3}; 
 
 regionCodes['Estados Unidos'] = 'USA';
 regionCodes['Iberoamérica'] = 'LATAM';
@@ -234,9 +249,10 @@ function performAnalysis() {
 	    fundData.forEach(function(dataFromFund) {
 		dataFromFund.regions.forEach(function(data) {
 		    if (results.regions[data.region] === undefined) {
-			results.regions[data.region] = data.percentage * dataFromFund.percentage/100;
+			results.regions[data.region] = {}
+			results.regions[data.region].percentage = data.percentage * dataFromFund.percentage/100;
 		    } else {
-			results.regions[data.region] += data.percentage * dataFromFund.percentage/100;
+			results.regions[data.region].percentage += data.percentage * dataFromFund.percentage/100;
 		    }
 		})
 		
@@ -249,8 +265,13 @@ function performAnalysis() {
 		})
 	    })
 
-	    resolve(results);
+	    Object.keys(results.regions).forEach(function(key) {
+		results.regions[key].coords = coords[key];
+		results.regions[key].coords.count = results.regions[key].percentage;
+		delete results.regions[key].percentage;
+	    })
 
+	    resolve(results);
 	})
     })// new Promise
 
@@ -267,6 +288,6 @@ app.get('/dummy', function(req, res) {
 var server = app.listen(8000, function () {
     var host = server.address().address;
     var port = server.address().port;
-    
+
     console.log('Investment analyzer listening at http://%s:%s', host, port);
 });
