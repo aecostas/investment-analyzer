@@ -3,15 +3,22 @@
 var request = require('request');
 var cheerio = require('cheerio');
 var express = require('express');
+var bodyParser = require('body-parser')
+var RGBScale = require('rgb-scale');
 var app = express()
-var funds = [];
-var funds2 = [];
 var promiseFunds = [];
 var results = {};
 
 const StorageLayer = require('./StorageLayer');
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
+
+// RGB Scale
+var colors = [[255,0,0,1], [0,0,255,0]];
+var positions = [0, 0.25, 0.75, 1];
+var domain = [0, 100];
+var scale = RGBScale(colors, positions, domain);
 
 var cache = new StorageLayer()
 
@@ -19,7 +26,7 @@ var regionCodes = {};
 var sectorCodes = {};
 var coords = {}
 
-coords['USA'] = {lat: 42.2333, lng: -8.7166, count: 3};
+coords['USA'] = {lat: 37.090240, lng:-95.712891, count: 3};
 coords['LATAM'] = {lat: -14.235004, lng: -51.925280, count: 3};
 coords['GB'] = {lat: 51.507351, lng: -0.127758, count:3}; 
 coords['CANADA'] = {lat: 56.130366, lng: -106.346771, count: 3}; 
@@ -58,44 +65,6 @@ sectorCodes['Servicios de Comunicación'] ='COM';
 sectorCodes['Energía'] ='ENERGY';
 sectorCodes['Industria'] ='INDUSTRY';
 sectorCodes['Tecnología'] ='TECHNOLOGY';
-
-funds2.push({
-    url:"http://localhost:8000/sample.html",
-    amount: 1000,
-    percentage: 100
-});
-
-funds.push({
-    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000MKIO&tab=3",
-    amount: 1000,
-    percentage: 20,
-})
-funds.push({
-    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000HLBC&tab=3",
-    amount: 1000,
-    percentage: 10,
-})
-funds.push({
-    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F0GBR04SLW&tab=3",
-    amount: 3000,
-    percentage: 10,
-})
-funds.push({
-    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000HLB6&tab=3",
-    amount: 5000,
-    percentage: 15,
-})
-funds.push({
-    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F0GBR04G6K&tab=3",
-    amount:2000,
-    percentage: 20,
-})
-funds.push({
-    url:"http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F000001AAQ&tab=3",
-    amount:1000,
-    percentage: 35
-})
-
 
 /**
  * Translates the given string into 
@@ -205,9 +174,9 @@ function parseFundRegions(fund) {
     });
     return regions;
 }// parseFundRegions
-							   
 
-function performAnalysis() {    
+
+function performAnalysis(funds) {
     // === MAIN LOOP ===
     //  1.- receive list of funds
     //  2.- retrieve the unknown
@@ -219,6 +188,8 @@ function performAnalysis() {
     var fundData = []
     var results = {}
 
+    console.warn("Fund analysis: ", funds);
+    
     return new Promise(function(resolve, reject) {    
 	results["regions"] = {}
 	results["sectors"] = {}
@@ -268,6 +239,7 @@ function performAnalysis() {
 	    Object.keys(results.regions).forEach(function(key) {
 		results.regions[key].coords = coords[key];
 		results.regions[key].coords.count = results.regions[key].percentage;
+		results.regions[key].color = scale(results.regions[key].percentage)
 		delete results.regions[key].percentage;
 	    })
 
@@ -278,8 +250,8 @@ function performAnalysis() {
 }// performAnalysis
 
 
-app.get('/dummy', function(req, res) {
-     performAnalysis().then(function(data) {
+app.post('/dummy', function(req, res) {
+    performAnalysis(req.body).then(function(data) {
 	res.send(data);
     })
 });

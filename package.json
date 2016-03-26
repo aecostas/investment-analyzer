@@ -16,7 +16,8 @@
       "gulp-eslint": "^1.1.1",
       "gulp-util": "3.0.7",
       "htmlparser2": "3.9.0",
-      "cheerio": "*"
+      "cheerio": "*",
+      "rgb-scale": "0.0.2"
   },
   "repository": {},
     "devDependencies": {
