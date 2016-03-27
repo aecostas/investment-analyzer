@@ -11,7 +11,7 @@ var results = {};
 
 const StorageLayer = require('./StorageLayer');
 
-app.use(express.static('public'));
+app.use(express.static('client'));
 app.use(bodyParser.json());
 
 // RGB Scale
@@ -239,7 +239,8 @@ function performAnalysis(funds) {
 	    Object.keys(results.regions).forEach(function(key) {
 		results.regions[key].coords = coords[key];
 		results.regions[key].coords.count = results.regions[key].percentage;
-		results.regions[key].color = scale(results.regions[key].percentage)
+		results.regions[key].color = scale(results.regions[key].percentage);
+		results.regions[key].value = results.regions[key].percentage;
 		delete results.regions[key].percentage;
 	    })
 
