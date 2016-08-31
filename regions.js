@@ -1,9 +1,11 @@
 'use strict';
 
+var jsonfile = require('jsonfile');
+var getopt = require('node-getopt');
 var request = require('request');
 var cheerio = require('cheerio');
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var RGBScale = require('rgb-scale');
 var app = express()
 var promiseFunds = [];
@@ -184,12 +186,12 @@ function performAnalysis(funds) {
     //  4.- save data from unknown
     //  5.- join data from unknown and cached
     //  6.- data mining
-    var unretrievedFunds = []
-    var fundData = []
-    var results = {}
+    var unretrievedFunds = [];
+    var fundData = [];
+    var results = {};
 
     console.warn("Fund analysis: ", funds);
-    
+
     return new Promise(function(resolve, reject) {    
 	results["regions"] = {}
 	results["sectors"] = {}
@@ -247,20 +249,44 @@ function performAnalysis(funds) {
 	    resolve(results);
 	})
     })// new Promise
-
 }// performAnalysis
 
+app.get('/dummy', function(req, res) {
+    res.send({data:"todo ok por aqui"})
+});
 
-app.post('/dummy', function(req, res) {
+app.post('/analysis', function(req, res) {
     performAnalysis(req.body).then(function(data) {
 	res.send(data);
     })
 });
 
 
-var server = app.listen(8000, function () {
-    var host = server.address().address;
-    var port = server.address().port;
 
-    console.log('Investment analyzer listening at http://%s:%s', host, port);
-});
+var cmdoptions = new getopt([
+    ['s' ,'', 'short option'],
+    ['i','interactive', 'Interactive mode']
+])
+    .bindHelp()
+    .parseSystem()
+
+
+if (cmdoptions.options.interactive) {
+    try {
+	var json_funds = jsonfile.readFileSync("funds.json");
+	performAnalysis(json_funds).then(function(data){
+	    console.warn(data);
+	})
+
+    } catch (err) {
+	console.log(err);
+    }
+    console.warn(json_funds);
+
+} else {
+    var server = app.listen(8000, function () {
+	var host = server.address().address;
+	var port = server.address().port;
+	console.log('Investment analyzer listening at http://%s:%s', host, port);
+    });
+}

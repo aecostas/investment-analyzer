@@ -17,7 +17,9 @@
       "gulp-util": "3.0.7",
       "htmlparser2": "3.9.0",
       "cheerio": "*",
-      "rgb-scale": "0.0.2"
+      "rgb-scale": "0.0.2",
+      "node-getopt": "0.2.3",
+      "jsonfile": "2.3.1"
   },
   "repository": {},
     "devDependencies": {
