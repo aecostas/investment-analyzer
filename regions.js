@@ -144,7 +144,7 @@ function parseFundSectors(fund) {
 	    }
 	    sectors.push(sector);
 	} catch(err) {
-	    console.error(err)
+	   // console.error(err)
 	}
     });
 
@@ -171,14 +171,14 @@ function parseFundRegions(fund) {
 	    }
 	    regions.push(region);
 	} catch(err) {
-	    console.error(err)		
+//	    console.error(err)		
 	}
     });
     return regions;
 }// parseFundRegions
 
 
-function performAnalysis(funds) {
+function performAnalysis(funds, nocache) {
     // === MAIN LOOP ===
     //  1.- receive list of funds
     //  2.- retrieve the unknown
@@ -189,16 +189,13 @@ function performAnalysis(funds) {
     var unretrievedFunds = [];
     var fundData = [];
     var results = {};
-
-    console.warn("Fund analysis: ", funds);
-
     return new Promise(function(resolve, reject) {    
 	results["regions"] = {}
 	results["sectors"] = {}
-
+	console.warn("========== ", nocache);
 	funds.forEach(function(url) {
 	    let fundinfo;
-	    if (fundinfo=cache.get(url) === undefined) {
+	    if (nocache || (fundinfo=cache.get(url) === undefined)) {
 		unretrievedFunds.push(retrieveFundData(url))
 	    } else {
 		fundData.push(fundinfo)
@@ -209,7 +206,6 @@ function performAnalysis(funds) {
 	// TODO: refactor this to not chain the actions in this way,
 	//       chain the promises instead
 	Promise.all(unretrievedFunds).then(function (fundbodies) {
-	    
 	    // parsing and caching
 	    fundbodies.forEach(function(fund) {
 		fund.regions = parseFundRegions(fund);
@@ -256,7 +252,7 @@ app.get('/dummy', function(req, res) {
 });
 
 app.post('/analysis', function(req, res) {
-    performAnalysis(req.body).then(function(data) {
+    performAnalysis(req.body, cmdoptions.options.nocache).then(function(data) {
 	res.send(data);
     })
 });
@@ -265,7 +261,8 @@ app.post('/analysis', function(req, res) {
 
 var cmdoptions = new getopt([
     ['s' ,'', 'short option'],
-    ['i','interactive', 'Interactive mode']
+    ['i','interactive', 'Interactive mode'],
+    ['','nocache', 'Retrieve new data']
 ])
     .bindHelp()
     .parseSystem()
@@ -274,12 +271,12 @@ var cmdoptions = new getopt([
 if (cmdoptions.options.interactive) {
     try {
 	var json_funds = jsonfile.readFileSync("funds.json");
-	performAnalysis(json_funds).then(function(data){
+	performAnalysis(json_funds, cmdoptions.options.nocache).then(function(data){
 	    console.warn(data);
 	})
 
     } catch (err) {
-	console.log(err);
+//	console.log(err);
     }
     console.warn(json_funds);
 
