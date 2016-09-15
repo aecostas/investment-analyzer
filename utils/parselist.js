@@ -72,7 +72,6 @@ function retrieveFundData(url) {
 
 }// retrieveFundData
 
-
 function parseFundBody(fund) {
     var $ = cheerio.load(fund);
     var info={};
@@ -80,7 +79,8 @@ function parseFundBody(fund) {
     info.regions=[];
 
     info.name = $(".snapshotTitleBox h1")[0].children[0].data;
-    
+    info.isin = $(".overviewKeyStatsTable tr").slice(4).children()[2].children[0].data);
+
     $(".overviewTopRegionsTable tr").slice(1).each(function() {
 	var children = $(this).children();
 
