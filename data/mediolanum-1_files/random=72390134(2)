@@ -1,0 +1,12 @@
+document.writeln("<DIV ID=\"msad50265\" style=\"text-align: center\" class=\"msmediaads\" data-width=\"300\" data-height=\"600\">");
+document.writeln("<ins class='dcmads' style='display:inline-block;width:300px;height:600px'");
+document.writeln("data-dcm-placement='N10049.273366MORNINGSTAR.ES/B9726359.131902141'");
+document.writeln("data-dcm-rendering-mode='iframe'");
+document.writeln("data-dcm-https-only");
+document.writeln("data-dcm-resettable-device-id=''");
+document.writeln("data-dcm-click-tracker=http://msmedia.morningstar.com/mstar/adclick/FCID=50265/site=ms.es/area=tools.quickrank.funds/size=120x600,160x600,300x600/pos=right/usrt=f/country=es/language=es-ES/platform=web/viewid=72390134/random=72390134/relocate=>");
+document.writeln("<script src='https://www.googletagservices.com/dcm/dcmads.js'></script>");
+document.writeln("</ins>");
+document.writeln("<noscript class=\"MOAT-morningstar630544086326?moatClientLevel1=358&amp;moatClientLevel2=3245&amp;moatClientLevel3=45678&amp;moatClientLevel4=50265&amp;moatClientSlicer1=_SITE_&amp;moatClientSlicer2=_PLACEMENT_&amp;zMoatPS=right&amp;zMoatSZ=120x600,160x600,300x600&amp;zMoatAR=tools.quickrank.funds&amp;zMoatST=ms.es&amp;zMoatPG=\"></noscript>");
+document.writeln("<script src=\"https://z.moatads.com/morningstar630544086326/moatad.js#moatClientLevel1=358&moatClientLevel2=3245&moatClientLevel3=45678&moatClientLevel4=50265&moatClientSlicer1=_SITE_&moatClientSlicer2=_PLACEMENT_&zMoatPS=right&zMoatSZ=120x600,160x600,300x600&zMoatAR=tools.quickrank.funds&zMoatST=ms.es&zMoatPG=\" type=\"text/javascript\"></script>");
+document.writeln("</DIV>");

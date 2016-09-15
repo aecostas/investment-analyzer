@@ -1,0 +1,3 @@
+document.writeln("<div id=\"adContent52699\">");
+document.writeln("<a href=\"http://msmedia.morningstar.com/mstar/adclick/FCID=52699/site=ms.es/area=tools.quickrank.funds/size=300x250,336x280,300x600/pos=topright/usrt=f/country=es/language=es-ES/platform=web/viewid=64210930/random=64210930\" target=\"_blank\"><img src=\"http://content.aimatch.com/mstar/308/Banner_BrightTALK_FI_300x250_EN_Replay.png\" alt=\"\" width=\"300\" height=\"250\" border=\"0\"  id=\"sasia-fcid-52699\" class=\"_sasia_fcid\" data-sasia-view-time=\"30\" data-sasia-view-percent=\"50\" data-sasia-view-url=\"\"></a>");
+document.writeln("</div>");

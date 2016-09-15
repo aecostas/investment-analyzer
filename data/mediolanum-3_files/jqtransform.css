@@ -1,0 +1,190 @@
+/* -------------
+ * Buttons
+ * ------------- */
+button.jqTransformButton {
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	overflow: visible;
+	font-family: Arial;
+}
+
+*:first-child+html button.jqTransformButton[type]{width: 1;} /* IE7 */
+
+button.jqTransformButton span {
+float:left; width:242px; height:28px; background:url(../images/LoginBoxLoginButton.gif) no-repeat 0 0; text-align:center; color:#fff; border:0; margin:0 0 0; cursor:pointer;}
+
+button.jqTransformButton span span {
+	color: #fff;
+	padding: 8px 4px 0px 8px;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 13px;
+	display: block;
+	text-decoration: none;
+	height: 33px;
+}
+
+
+
+/*clicked*/
+button.jqTransformButton_click span span { background-position: left -66px ; }
+button.jqTransformButton_click span { background-position: right -66px ; }
+
+
+
+/* -------------
+ * Inputs
+ * ------------- */
+.jqTransformInputWrapper {
+	background: transparent url(../images/input_text_left1.gif) no-repeat left top;
+	height: 28px;
+	padding: 0 0 0 5px;
+	float:left;
+}
+
+.jqTransformNotDisplayed {
+	display: none;
+}
+
+.jqTransformInputInner {
+	background: transparent url(../images/input_text_right.gif) no-repeat top right;
+	padding: 0 5px 0 0; 
+	margin: 0px;
+}
+
+.jqTransformInputInner div {
+	height: 28px;
+}
+
+.jqTransformInputInner div input {
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+	line-height: 28px;
+	vertical-align: middle;
+	height: 28px;
+	color:#333;	
+	border: none;
+	margin: 0px;
+	background:transparent;
+	width:100%!important;
+	padding:0px!important;
+	outline:none!important;
+	
+	}
+
+/* -------------
+ * Radios
+ * ------------- */
+.jqTransformRadioWrapper {float: left;display:block;}
+.jqTransformRadio {
+	background: transparent url(../images/radio.gif) no-repeat center top;
+	vertical-align: middle;
+	height: 19px;
+	width: 18px;
+	display:block;/*display: -moz-inline-block;*/
+}
+
+
+/* -------------
+ * Checkboxes
+ * ------------- */
+span.jqTransformCheckboxWrapper{
+	display:block;float:left;
+	margin-right:5px;
+	padding-bottom:2px;
+}
+a.jqTransformCheckbox {
+	background: transparent url(../images/checkbox_registrationProcess.gif) no-repeat center top;
+	vertical-align: middle;
+	height: 19px;
+	width: 18px;
+	display:block;/*display: -moz-inline-block;*/
+}
+
+/* -------------
+ * Checked - Used for both Radio and Checkbox
+ * ------------- */
+a.jqTransformChecked { background-position: center bottom;}
+
+
+/* -------------
+ * Selects
+ * ------------- */
+.jqTransformSelectWrapper {
+	width: 45px;
+	position:relative;
+	height: 28px;
+	background: url(../images/select_left.gif) no-repeat top left;
+	float:left;
+	}
+
+.jqTransformSelectWrapper div span {
+	
+	font-size: 11px;
+	float: none;
+	position: absolute;
+	white-space: nowrap;
+	height: 20px;
+	line-height: 15px;
+	padding: 8px 0 0 5px;
+	overflow: hidden;
+	cursor:pointer;
+	width:98%!important;
+	text-overflow: ellipsis;
+	/*border: 1px solid #CCCCCC;*/
+/*	border-right: none;*/
+}
+
+.jqTransformSelectWrapper  a.jqTransformSelectOpen {
+	display: block;
+	position: absolute;
+	right: 0px;
+	width: 24px;
+	height: 28px;
+	background: url(../images/select_right.gif) no-repeat center center;
+}
+
+.jqTransformSelectWrapper ul {
+	position: absolute;
+	width: 43px;
+	top: 30px;
+	left: 0px;
+	list-style: none;
+	background-color: #FFF;
+	border: solid 1px #CCC;
+	display: none;
+	margin: 0px;
+	padding: 0px;
+	height: 150px;
+	overflow-x:hidden !important;
+	overflow-y: auto;
+	z-index:10;
+}
+.jqTransformSelectWrapper ul li { float:none!important; width:100%!important; border-bottom:none!important; padding:0!important;}  
+.jqTransformSelectWrapper ul a {
+	display: block;
+	padding: 5px;
+	text-decoration: none;
+	color:#333;
+	background-color: #FFF;
+	font-size: 12px;
+}
+
+.jqTransformSelectWrapper ul a.selected {
+	background: #EDEDED;
+	color: #333;
+}
+
+.jqTransformSelectWrapper ul a:hover, .jqTransformSelectWrapper ul a.selected:hover {
+	background:#3582c4;
+	color: #fff;
+}
+
+/* -------------
+ * Hidden - used to hide the original form elements
+ * ------------- */
+.jqTransformHidden {display: none;}
+.readonly {color: #333 !important;}

@@ -1,0 +1,7 @@
+@import url(/includes/styles/Images.css);
+/*Note: If you need to add a local images please add to local images folder using this path: background-image: url('../images/buttonb.jpg');*/
+
+#helpDiv
+{
+	background-image: url('../images/Ayuda.gif');
+}

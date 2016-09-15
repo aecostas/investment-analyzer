@@ -1,0 +1,55 @@
+﻿@import url(/includes/styles/main3.css);
+
+/* Header overrides 
+.LayerFatter {border-top:0;}
+
+.LayerFatter {
+    border-top: 7px solid #333333;
+}    
+*/
+/*
+.LayerFatter 
+{
+    text-align: left;
+}
+*/
+#LayerTopPerformingCol2 {
+    margin: 0px 0 0;
+}
+
+.headline1, .headlineFirst {
+    float: left;
+}    
+
+.grid-view td a {
+font-size:10px !important;
+}
+#searchpanel {
+    float: left;
+    left: 430px;
+    margin-top: 6px;
+    position: absolute;
+}
+#Greeter {
+    font-size: 12px;
+    left: 200px;
+    line-height: 14px;
+    top: 20px;
+    width: 230px;
+}
+.slinklnp {
+float: left;
+font: 12px/24px arial;
+width: auto;
+}
+.Tabbase_tab {
+    float: left;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    padding-right: 40px;
+}
+.bulletPanel a.textlink {font-weight: normal;line-height: 16px;color:black;display: block;width: 285px;float: left;}
+.bulletPanel a.textlink p {float: left;margin: 0px;width: 270px;}
+/*Ticket 37567*/
+
+#LayerMainContent{ padding:10px 0 0 0}

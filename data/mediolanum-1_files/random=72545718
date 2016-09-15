@@ -1,0 +1,3 @@
+document.writeln("<div id=\"adContent16951\">");
+document.writeln("<a href=\"http://msmedia.morningstar.com/mstar/adclick/FCID=16951/site=ms.es/area=tools.quickrank.funds/size=195x90/pos=toprightbutton/usrt=f/country=es/language=es-ES/platform=web/viewid=72545718/random=72545718\" target=\"_blank\"><img src=\"http://content.aimatch.com/mstar/350/newsletter_195x90_spain.gif\" alt=\"\" width=\"195\" height=\"90\" border=\"0\"  id=\"sasia-fcid-16951\" class=\"_sasia_fcid\" data-sasia-view-time=\"30\" data-sasia-view-percent=\"50\" data-sasia-view-url=\"\"></a>");
+document.writeln("</div>");

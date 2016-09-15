@@ -1,0 +1,41 @@
+﻿/* title bar */
+.ms_titlebar {float:left; width:100%; background:#fff url(../images/titlebar.gif) repeat-x 0 0; border:1px solid #d6d7d6; border-top-color:#adaaad; color:#636163; }
+
+.ms_titlebar_back, .ms_titlebar_dropdowns, .ms_titlebar_help, .ms_titlebar_title, .ms_titlebar_email, .ms_titlebar_email { float:left; height:25px; line-height:25px; vertical-align:middle; }
+.ms_titlebar_back div, .ms_titlebar_help div, .ms_titlebar_email div {height:100%; vertical-align:middle; }
+.ms_titlebar_back a, .ms_titlebar_help a, .ms_titlebar_email a { cursor:pointer; display:block; height:100%; }
+
+.ms_titlebar_back { border-right:1px solid #d6d7d6; }
+.ms_titlebar_back div { min-width:22px; }
+.ms_titlebar_back a{ background:url(../images/arrow_back_button.gif) no-repeat 6px center; min-width:22px; }
+.ms_titlebar_back a:hover { text-decoration:none; }
+.ms_titlebar_back a span{ padding:0 6px 0 20px; }
+.ms_titlebar_back a:hover span { text-decoration:underline; }
+
+.ms_titlebar_help, .ms_titlebar_email { border-left:1px solid #d6d7d6; border-bottom: 1px solid white;}
+.ms_titlebar_help div, .ms_titlebar_email div {border-left: 1px solid white; border-right: 1px solid white;} 
+.ms_titlebar_help div { text-align:center; width:20px; }
+.ms_titlebar_help a { background:transparent url(../images/help2.gif) no-repeat 50% 50%; }
+.ms_titlebar_help img { position:relative; top:2px; }
+
+.ms_titlebar_email div {width: 40px;}
+.ms_titlebar_email a { background:transparent url(../images/title-bar-email.gif) no-repeat 50% 50%; }
+
+.ms_titlebar_title { padding-left:6px; border-left: 1px solid white;}
+.ms_titlebar_title h2 { display:inline; font-weight:bold; font-size: 11px; }
+
+.ms_titlebar_dropdowns { border-right: 1px solid white; }
+.ms_titlebar_dropdowns select { margin-right:7px; margin-top: 3px; font-size:11px; height:20px; }
+
+.ms_titlebar_back div { border-left: 1px solid white; border-right: 1px solid white; }
+
+#linkHelpModal, #linkHelpModal div, #linkHelpModal ul {font-size: 11px; line-height: 16px;}
+#linkHelpModal a {border-width: 0 0 1px 0; border-color: #64686c; text-decoration:none;}
+#linkHelpModal a:link { border-style: solid; }
+#linkHelpModal a:visited { border-style: dotted;}
+#linkHelpModal a:hover { color: #000; border-width:0;}
+#linkHelpModal .ms_help_h2 { font-size: 13px; line-height: 20px;}
+#linkHelpModal .ms_help_h3 { }
+#linkHelpModal .ms_help_h3_bold { font-weight: bold; }
+#linkHelpModal ul {padding-left: 40px; margin: 1em 0 1em 0;}
+

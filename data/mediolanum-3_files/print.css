@@ -1,0 +1,31 @@
+#mainContentDiv { width: 565px; margin-left:70px;}
+#overviewArticlesDiv { width: 565px; }
+
+#snapshotTabDiv { display : none; }
+#snapshotIconsDiv { display : none; }
+/*
+#returnsGraphDiv { display : none; }
+*/
+
+#LayerHeader { display : none; }
+#LayerFooter { display : none; }
+
+#overviewAdDiv { display : none; }
+
+div#left-col { display : none; }
+div#right-col { display : none; }
+
+.snapshotTable td.titleBarHeading { line-height: normal; height: 16px; padding: 1px 5px 2px 5px; text-align: left; /*color: black;*/ font-weight: bold; font-size: 10px; /* border: solid 2px black; */ }
+.snapshotTable td.titleBarNote { line-height: normal; height: 16px; padding: 1px 5px 2px 5px; text-align: right; /*color: black;*/ font-weight: normal; font-size: 10px; /* border: solid 2px black; */ }
+
+div#content {
+  width:690px;
+  margin:0px 0 10px 0;	
+}
+
+#LeftAd1  { display : none; }
+#LeftNav  { display : none; }
+
+#perfColumn { width: 272px; float:left }
+
+

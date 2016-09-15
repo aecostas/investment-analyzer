@@ -1,0 +1,63 @@
+﻿#dialog {
+    position:fixed; z-index:200; font-family:Verdana, Arial, Helvetica; font-size:14px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: #e8e8e8;
+    padding: 9px;
+}
+
+#dialog-close
+{
+    position: absolute;
+    right: 0!important;
+    right: -1px;
+    top: -17px;
+    font-size: 12px;
+    width: 55px;
+    height: 20px;
+    text-decoration: none;
+    color: #333;
+    float: left;
+    text-align: center;
+    line-height: 19px;
+    cursor: pointer;
+    background: #e8e8e8;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+}
+
+#dialog-content {display:block; padding:6px; color:#666666; font-size:13px;}
+
+#dialog-mask {
+    position:fixed; 
+    top:0; 
+    left:0; 
+    height:100%; 
+    width:100%; 
+    background:#000; 
+    opacity:0.5; 
+    filter:alpha(opacity=50); 
+    z-index:100
+}
+#dialog-button-container { text-align:center; margin:2px 6px 6px 2px; }
+#dialog-button { font-weight:bold; font-size:1.1em; font-family:Arial, sans-serif; padding:2px 5px 2px 5px; }
+
+.popup { border: 1px solid #dadada;background: #FFFFFF; 
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;}
+
+/*.error {background:#fff url(../images/e_bg.jpg) bottom right no-repeat; border:1px solid #924949; border-top:none}
+.errorheader {background:url(../images/e_hd.gif) repeat-x; color:#6f2c2c; border:1px solid #924949; border-bottom:none}
+.errorbutton { background-color:#9F4C4C; border:1px solid #924949; color:#fff; }
+.warning {background:#fff url(../images/w_bg.jpg) bottom right no-repeat; border:1px solid #c5a524; border-top:none}
+.warningheader {background:url(../images/w_hd.gif) repeat-x; color:#957c17; border:1px solid #c5a524; border-bottom:none}
+.warningbutton { background-color:#eFcC47; border:1px solid #957C17; color:#957C17; }
+.success {background:#fff url(../images/s_bg.jpg) bottom right no-repeat; border:1px solid #60a174; border-top:none}
+.successheader {background:url(../images/s_hd.gif) repeat-x; color:#3c7f51; border:1px solid #60a174; border-bottom:none}
+.successbutton { background-color:#3c7f51; border:1px solid #fff; color:#fff; }
+.prompt {background:#fff url(../images/p_bg.jpg) bottom right no-repeat; border:1px solid #4f6d81; border-top:none}
+.promptheader {background:url(../images/p_hd.gif) repeat-x; color:#355468; border:1px solid #4f6d81; border-bottom:none}
+.promptbutton { background-color:#4F6D81; border:1px solid #fff; color:#fff; }*/

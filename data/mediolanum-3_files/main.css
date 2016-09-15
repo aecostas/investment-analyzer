@@ -1,0 +1,21 @@
+﻿@import url(/includes/styles/main.css);
+/*Note: If you need to add a local images please add to local images folder using this path: background-image: url('../images/buttonb.jpg');*/
+/*#managementPurchaseInformationMinInvestDiv{display:none;}*/
+/*.snapshotUkSpecific{display:none;}*/
+/*hide uk specific on snapshot*/
+/*#overviewArticlesDiv{display:none;}*/
+/*hide fundselector search specifc fields*/
+.FundSelectHideUniverseField,.FundSelectHideIMASector{display:none;}
+
+/*hide in tooltip in grid (quickrank) the functionalities add to xray ....*/
+.ToolTipGridHideAddToXray{display:inline ! important;}
+
+/*hide standardized performance on qt tab return ....*/
+/*#CustomFundFactsDivP{display:none;}*/
+.ToolTipGridHideAddByISAQuickrank{display:none ! important}
+.ToolTipGridHideAddByLNPQuickrank{display:none ! important}
+.ToolTipGridHideAddByLNPFundScreener{display:none ! important}
+.ToolTipGridHideAddByEtfScreener{display:none ! important}
+
+.StatusHoldingPiP{display:none ! important}/*used to hide pip field on lnpscreener*/
+

@@ -1,0 +1,7 @@
+﻿@import url(/includes/styles/newRegistrationProcess.css);
+
+/*#loginBoxMidBg{height:290px!important;}*/
+#registerBoxMidBg, #registerBoxMidBg2 {
+    height: 500px!important;
+}
+.registerRow .registerCol02{height:500px!important;}

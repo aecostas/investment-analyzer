@@ -20,7 +20,10 @@ class StorageLayer {
      * @return {Object} 
      */
     get(url) {
-	return this.cached[url]
+	// TODO: use ID instead of URL
+	console.warn("Getting from cache");
+	return this.cached[url];
+	
     }// getFund
 
     /**

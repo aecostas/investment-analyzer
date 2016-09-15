@@ -1,0 +1,3 @@
+document.writeln("<div id=\"adContent52707\">");
+document.writeln("<a href=\"http://msmedia.morningstar.com/mstar/adclick/FCID=52707/site=ms.es/area=tools.quickrank.funds/size=120x600,160x600,300x600/pos=right/usrt=f/country=es/language=es-ES/platform=web/viewid=66091850/random=66091850\" target=\"_blank\"><img src=\"http://content.aimatch.com/mstar/308/Linkedin-BrightTALK_FI_Markets_160x600_EN_Replay.png\" alt=\"\" width=\"160\" height=\"600\" border=\"0\"  id=\"sasia-fcid-52707\" class=\"_sasia_fcid\" data-sasia-view-time=\"30\" data-sasia-view-percent=\"50\" data-sasia-view-url=\"\"></a>");
+document.writeln("</div>");

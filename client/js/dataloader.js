@@ -57,8 +57,7 @@ map.on("click", function(evt) {
 	$(element).popover('hide');
     }
 
-});					  
-
+});
 
 var funds = []
 funds.push({
@@ -120,9 +119,9 @@ function getColorFromRange(value, divisions) {
 } // getColorFromRange
 
 
-$.ajax( {
+$.ajax({
     type: "POST",
-    url: "http://localhost:8000/dummy",
+    url: "http://localhost:8000/analysis",
     data: JSON.stringify(funds),
     contentType: "application/json",
     success: function( data ) {

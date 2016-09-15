@@ -1,0 +1,163 @@
+/*
+-----------------------
+Grid Globals
+-----------------------
+*/
+
+.gridItem, 
+.gridItemNoBack,
+.gridAlternateItem,
+.gridAlternateItem.gridHeader,
+.gridHeader,
+.gridFooter,
+.gridHeaderText, 
+.gridHeaderText a,
+.gridHeaderFixedText, 
+.gridHeaderFixedText a,
+.gridHeaderNumeric, 
+.gridHeaderNumeric a,
+.msData, 
+.msDataBold, 
+.msDataNumeric, 
+.msDataText, 
+.msDataText a, 
+.msDataTextSpace, 
+.msDataTextBorderTop, 
+.msDomesticPrefix, 
+.msForeignPrefix,
+.portfolioGridHeaderText, 
+.portfolio_addHoldingHeaderText, 
+.portfolioGridHeaderTextRight, 
+.portfolioNewsGridHeaderText,
+.portfolioGridHeaderText a , 
+.portfolio_addHoldingHeaderText a,
+.watchlistGridHeaderText,
+.watchlistGridHeaderText,
+.watchlistGridHeaderText a { font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none; font-weight: normal; font-size: 11px; color: #333333; text-align: left; background-color: transparent; }
+a { text-decoration: none; }
+th { padding-left:1px; vertical-align:bottom; padding-bottom:0px; padding-top:0px; }
+
+/*
+-----------------------
+Grid items 
+-----------------------
+*/
+
+.gridItem td, 
+.gridItemNoBack td,
+.gridAlternateItem td,
+.gridAlternateItem.gridHeader  { vertical-align: middle; }
+.gridItem { height: 40px!important; }
+.gridItemNoBack { height: 20px; }
+.gridAlternateItem { height: 40px!important; }
+.gridAlternateItem td { background-color: #C2D9F1; }
+.gridAlternateItem.gridHeader { height: 59px; }
+.gridItem td.shrink, 
+.gridItem td.Shrink,
+.gridAlternateItem td.shrink,
+.gridAlternateItem td.Shrink { -moz-binding: url("/xml/ellipsis.xml#ellipsis"); overflow: hidden; text-overflow: ellipsis; white-space: normal; }
+/*
+-----------------------
+Grid Header 
+-----------------------
+*/
+
+.gridHeader,
+.gridHeaderText,
+.gridHeaderTextSpace,
+.gridHeaderText a,
+.gridHeaderNumeric,
+.gridHeaderNumeric a { padding-top:6px; color: #828282; border-bottom: solid 1px gray; vertical-align: Top; height: 59px; }
+.gridHeader:hover { color: #e7e7e7;}
+.gridHeaderTextSpace {	padding-left: 5px; }
+.gridHeaderText a { padding-top:0px; border-width:0px; white-space:nowrap; }
+.gridHeaderText a img { border-width: 0px; vertical-align:middle; }
+.gridHeaderFixedText { position: relative; top: expression(this.offsetParent.scrollTop); padding-top:3px;  color: white; background-color: #797979; border: solid 1px gray; vertical-align: Top; height: 20px; }
+.gridHeaderNumeric { text-align:right; }
+.gridHeaderNumeric a {padding-top:0px; text-align:right; border-width:0px; }
+.gridHeaderNumeric a img { border-width: 0px; }
+
+/*
+-----------------------
+Grid Footer 
+-----------------------
+*/
+
+.gridFooter { font-weight: bold; color:Black; vertical-align:top; text-align:right; height: 40px; border-top: solid 1px gray; }
+.gridFooter td { padding-top:5px; }
+.gridFooterText { text-align:left; }
+.gridHeaderFixedText a { background-color: #797979; border-width:1px; vertical-align: top; height: 15px; white-space:nowrap; }
+
+/*
+-----------------------
+Grid misc 
+-----------------------
+*/
+
+.gridDivFixed { overflow:auto; /*height:155px; */ }
+.GridArrow { margin-top:4px; padding:0px; vertical-align:top; }
+
+/*
+-----------------------
+MS Styles
+-----------------------
+*/
+
+.msData, 
+.msDataBold,
+.msDataNumeric,
+.msDataText, 
+.msDataText a,
+.msDataTextSpace,
+.msDataTextBorderTop { line-height:15px; }
+.msDataBold {font-weight:bold;}
+.msDataNumeric { text-align:right; padding-bottom:5px;}
+.msDataText { padding-bottom:5px;}
+.msDataTextSpace { padding-left: 5px; padding-bottom:5px; padding-top:3px;}
+.msDataTextBorderTop {border-top:solid 1px #bcbebe}
+.msDomesticPrefix, 
+.msForeignPrefix { color:Black; font-size:9px; line-height:13px;}
+
+/*
+-----------------------
+Portfolio grid  
+-----------------------
+*/
+
+.portfolioGridHeaderText, 
+.portfolio_addHoldingHeaderText,
+.portfolioGridHeaderTextRight,
+.portfolioNewsGridHeaderText,
+.portfolioGridHeaderText a , 
+.portfolio_addHoldingHeaderText a,
+.watchlistGridHeaderText,
+.watchlistGridHeaderText a { padding-top:4px;  color: #828282;  vertical-align: Top;  border-width: 0px;  border-bottom:none; }
+.portfolioGridHeaderTextRight { text-align:right; }
+.portfolioNewsGridHeaderText { border-bottom:solid 1px gray; }
+.portfolioGridHeaderText a , 
+.portfolio_addHoldingHeaderText a,
+.watchlistGridHeaderText a  { padding-top:0px; white-space:nowrap; height: 40px;}
+.portfolioGridHeaderText a img, 
+.portfolio_addHoldingHeaderText a img { border-width: 0px;  vertical-align:middle; }
+.watchlistGridHeaderText a img { border-width: 0px; vertical-align: Top; }
+.watchlistGridHeaderText { padding-top:6px; }
+.portfolioEditPanel { background-color:#E6F0FA; }
+.panel_back { background-color:#E6F0FA; }
+
+.missingData, .missingDataAlternating { font-style: italic; }
+
+.missingData img, .missingDataAlternating img
+{
+    -webkit-filter: grayscale(100%);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+}
+
+.missingData a, 
+.missingData .msDataText, 
+.missingData .msDataNumeric, 
+.missingData .msDataTextSpace { color: #ccc !important; }
+
+.missingDataAlternating a, 
+.missingDataAlternating .msDataText, 
+.missingDataAlternating .msDataNumeric, 
+.missingDataAlternating .msDataTextSpace { color: #aaa !important; }

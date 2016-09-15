@@ -1,0 +1,32 @@
+﻿#expandedMenu{ float:left;position:relative;right:2.1%; width:953px;background:url(/includes/images/repeater.gif) repeat-y 0 0;padding:8px 20px 30px 20px;border-top:1px solid #a7aaaf;}
+#panel{padding:5px 0 0 0; float:left; width:100%}
+.panelLeft{width:370px;float: left;}
+.panelLeft a.dropdownheading, #toggle p{padding:10px 0 0 0;font-size:18px; line-height:20px; color:#369; font-weight:bold; width:360px; margin:0px;}
+.panelLeft ul{ float:left; width:100%; padding:0 0 25px 0; margin:0px;}
+.panelLeft ul li{float:left; width:100%; list-style:none; color:#333; padding:15px 0 0 0; font-size:13px; line-height:15px; background:url(/includes/images/blackArrow_panel.gif) no-repeat 0 20px ;}
+.panelLeft ul li a{color:#333; padding:0 0 0 15px; font-size:13px; line-height:15px; font-family:Verdana, Arial, Helvetica, sans-serif;}
+.panelLeft ul.bottomLinks{ float:left; width:100%; border-top:1px solid #cccccc; padding:0 0 20px 0}
+.panelLeft ul.bottomLinks li{ float:left; width:auto;background:url(/includes/images/blueArrow_panel.gif) no-repeat 0 26px; padding:22px 0 0 0}
+.panelLeft ul.bottomLinks li a{ float:left; width:auto; color:#369!important;font-size:11px; line-height:13px; padding:0 10px 0 10px; font-weight:bold}
+.panelLeft ul.bottomLinks li a:hover{ text-decoration:underline}
+.panelLeft p{ float:left; width:100%; color:#666;font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 11px;line-height: 15px; margin:0px;}
+.panelLeft p a{ color:#369!important;}
+.panelLeft p a:hover{ text-decoration:underline}
+.panelRight{ float:right; width:470px; padding:0 30px 0 0;}
+.panelRight .introVideo{ float:left; width:430px; height:245px;}
+
+#toggle{ width:100%;float:right;}
+#toggle a{ float:right; width:auto; color:#369!important;font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 11px;line-height: 15px;}
+#toggle a img{width:auto; padding:0 0 0 5px;}
+#toggle p{width:auto; padding:0; color:#333; font-size:15px; line-height:17px;}
+
+/**the Benelux Advertorial Box**/
+.AdmoduleTop{float: left;width: 368px; font-size:12px;line-height:16px;font-family:Verdana, Arial, Helvetica, sans-serif; border:1px solid #DDD; margin:20px 0 0 0;}
+.AdmoduleTo	a img{max-width: 340px;min-height: 20px;}
+.AdmoduleMid{ padding:5px 0 0 0}
+.AdmoduleMid a{float: left;display: block;padding: 0 5px 5px 0;}
+.AdmoduleMid a img{max-height: 80px;max-width: 80px;}
+.AdmoduleMid span{font-size:14px; line-height:18px; font-weight:bold;}
+.AdmoduleMid p a{ color:#333; text-decoration:underline; display:inline; float:none;}
+.AdmoduleMid p a:hover{ text-decoration:underline;}
+div.nl_feedback{position:fixed;background-color:transparent!important;border-top-color: transparent!important;border-bottom-color: transparent!important;border-left-color: transparent!important; padding-right:0px!important; z-index:1}

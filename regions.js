@@ -7,7 +7,7 @@ var cheerio = require('cheerio');
 var express = require('express');
 var bodyParser = require('body-parser');
 var RGBScale = require('rgb-scale');
-var app = express()
+var app = express();
 var promiseFunds = [];
 var results = {};
 
@@ -108,7 +108,6 @@ function getSectorCode(sector) {
  * @return {Promise}
  */
 function retrieveFundData(fund) {
-
     return new Promise(function(resolve, reject) {
 	request({
 	    uri:fund.url
@@ -121,7 +120,7 @@ function retrieveFundData(fund) {
 	    resolve(fund);
 	})
     })// Promise
-    		
+
 }// retrieveFundData
 
 
@@ -189,10 +188,9 @@ function performAnalysis(funds, nocache) {
     var unretrievedFunds = [];
     var fundData = [];
     var results = {};
-    return new Promise(function(resolve, reject) {    
+    return new Promise(function(resolve, reject) {
 	results["regions"] = {}
 	results["sectors"] = {}
-	console.warn("========== ", nocache);
 	funds.forEach(function(url) {
 	    let fundinfo;
 	    if (nocache || (fundinfo=cache.get(url) === undefined)) {
@@ -201,7 +199,7 @@ function performAnalysis(funds, nocache) {
 		fundData.push(fundinfo)
 	    }
 	})
-	
+
 	// TODO: fundbodies should include the fund identifier
 	// TODO: refactor this to not chain the actions in this way,
 	//       chain the promises instead
@@ -273,10 +271,10 @@ if (cmdoptions.options.interactive) {
 	var json_funds = jsonfile.readFileSync("funds.json");
 	performAnalysis(json_funds, cmdoptions.options.nocache).then(function(data){
 	    console.warn(data);
-	})
+	});
 
     } catch (err) {
-//	console.log(err);
+	console.log(err);
     }
     console.warn(json_funds);
 

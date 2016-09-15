@@ -1,0 +1,14 @@
+﻿.ac_results{padding:0px;border:1px solid #CCC;border-bottom-color:#999;border-right-color:#999;background-color:white;overflow:hidden;z-index:9999999;-moz-box-shadow:3px 3px 7px #999;-webkit-box-shadow:3px 3px 7px #999;box-shadow:3px 3px 7px #999}
+.ac_results li:first-child .searchheader{border-top:none}
+.ac_results ul{width:100%;list-style-position:outside;list-style:none;padding:0;margin:0}
+.ac_results i{font-style:italic}
+.ac_results b{font-weight:bold}
+.ac_results li{margin:0px;padding:2px 5px;cursor:default;display:block; /*if width will be 100% horizontal scrollbar will apearwhen scroll mode will be used*//*width: 100%;*/font:10px Verdana, Arial, Helvetica, sans-serif; /*it is very important, if line-height not set or setin relative units scroll will be broken in firefox*/line-height:16px;overflow:hidden}
+.ac_loading{background:white url('../images/indicator.gif') right center no-repeat;}
+.ac_odd{font:11px Verdena;background-color:#fff}
+.ac_even{font:11px Verdena;background-color: #fff}
+.ac_over{background-color:#E4EDFC;color:black}
+.ac_over i{color:black}
+.ac_over b{font-weight:bold;color:black}
+.searchheader{font-size:11px;font-weight:bold;padding-top:5px;border-top:1px solid #ccc}
+.searchExchange{color:#666}
