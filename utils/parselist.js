@@ -73,16 +73,19 @@ function retrieveFundData(url) {
 }// retrieveFundData
 
 
-function parseFund(fund) {
+function parseFundBody(fund) {
     var $ = cheerio.load(fund);
-    var sectors=[];
-    var regions=[];
+    var info={};
+    info.sectors=[];
+    info.regions=[];
 
+    info.name = $(".snapshotTitleBox h1")[0].children[0].data;
+    
     $(".overviewTopRegionsTable tr").slice(1).each(function() {
 	var children = $(this).children();
 
 	try {
-	    regions.push({
+	    info.regions.push({
 		"region": children[0].children[0].data,
 		"percentage": parseFloat(children[1].children[0].data.replace(',','.'))
 	    });
@@ -94,7 +97,7 @@ function parseFund(fund) {
     $(".overviewTopRegionsTable tr").slice(1).each(function() {
 	var children = $(this).children();
 	try {
-	    sectors.push({
+	    info.sectors.push({
 		"sector": children[0].children[0].data,
 		"percentage": parseFloat(children[1].children[0].data.replace(',','.')),
 	    });
@@ -102,13 +105,13 @@ function parseFund(fund) {
 	    console.error(err);
 	}
     });
-    return {sectors:sectors, regions:regions};
-}// parseFunds
+    return info;
+}// parseFundBody
 
 let listOfFunds = getListOfFunds(files);
 
 retrieveFundData("http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000MKIO").then(function(body) {
-    let info = parseFund(body);
+    let info = parseFundBody(body);
     console.warn(info);
 });
 
