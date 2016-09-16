@@ -1,16 +1,18 @@
 'use strict';
 
 var fs = require('fs');
+var jsonfile = require('jsonfile')
 var request = require('request');
 var cheerio = require('cheerio');
 var bodyParser = require('body-parser');
-
 
 var files = [
     '../data/mediolanum-1.htm',
     '../data/mediolanum-2.htm',
     '../data/mediolanum-3.htm'
 ];
+
+var fundsInfo = [];
 
 /**
  * Parse a file result of a search on
@@ -56,8 +58,8 @@ function getListOfFunds(files) {
  * @param {Object} fund - fund.url URL to retrieve
  * @return {Promise}
  */
-function retrieveFundData(url) {
-//    console.warn("Getting url: ", url);
+function retrieveFundData(url, index, total) {
+
     return new Promise(function(resolve, reject) {
 	request({
 	    uri:url
@@ -65,6 +67,9 @@ function retrieveFundData(url) {
 	    if (error) {
 		console.warn(error);
 	    }
+	    
+	    console.warn("[",index,"/",total,"]     ", url);
+
 	    // TODO: handle errors
 	    resolve(body);
 	})
@@ -78,8 +83,15 @@ function parseFundBody(fund) {
     info.sectors=[];
     info.regions=[];
 
-    info.name = $(".snapshotTitleBox h1")[0].children[0].data;
-    info.isin = $(".overviewKeyStatsTable tr").slice(4).children()[2].children[0].data);
+    try{
+	info.name = $(".snapshotTitleBox h1")[0].children[0].data;
+    }catch (err) {
+	console.error("Error parsing name. Continuing...");
+	console.error(err);
+	return null;
+    }
+
+    info.isin = $(".overviewKeyStatsTable tr").slice(4).children()[2].children[0].data;
 
     $(".overviewTopRegionsTable tr").slice(1).each(function() {
 	var children = $(this).children();
@@ -90,7 +102,9 @@ function parseFundBody(fund) {
 		"percentage": parseFloat(children[1].children[0].data.replace(',','.'))
 	    });
 	} catch(err) {
+	    console.warn("Error parsing region");
 	    console.error(err);
+	    info.regions.push({});
 	}
     });
 
@@ -102,28 +116,36 @@ function parseFundBody(fund) {
 		"percentage": parseFloat(children[1].children[0].data.replace(',','.')),
 	    });
 	} catch(err) {
+	    console.error("Error parsing sector");
 	    console.error(err);
+	    info.sectors.push({});
 	}
     });
+
     return info;
 }// parseFundBody
 
 let listOfFunds = getListOfFunds(files);
+let listOfPromises = [];
 
-retrieveFundData("http://www.morningstar.es/es/funds/snapshot/snapshot.aspx?id=F00000MKIO").then(function(body) {
-    let info = parseFundBody(body);
-    console.warn(info);
-});
+for (let i=0; i<listOfFunds.length; i++) {
+    listOfPromises.push(retrieveFundData(listOfFunds[i].url, i, listOfFunds.length));
+}// for
 
+Promise.all(listOfPromises).then(function (fundbodies) {
 
-//for (let i=0; i<listOfFunds.length; i++) {
-  //  console.warn("Parsing: ", listOfFunds[i].url, "   ", listOfFunds[i].url.includes("F00000MKIO"));
+    for (let i=0; i<fundbodies.length; i++) {
+	let info = parseFundBody(fundbodies[i]);
+	if (info!=null) {
+	    fundsInfo.push(info);
+	}
+    }
     
-    //    retrieveFundData(listOfFunds[i].url).then(function(body) {
-    //	let info = parseFund(body);
-    //	console.warn(info);
-    //    })w
-//}// for
+   for (let i=0; i<fundbodies.length; i++) {
+	jsonfile.writeFileSync("output.json", fundsInfo);
+   }// for
+
+});
 
 // http://docs.sequelizejs.com/en/v3/
 // TODO: crear objeto con los datos de cada fondo
