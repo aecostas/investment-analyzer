@@ -2,7 +2,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var fs = require('fs');
-var jsonfile = require('jsonfile')
 var request = require('request');
 var cheerio = require('cheerio');
 var bodyParser = require('body-parser');
