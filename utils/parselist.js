@@ -1,10 +1,12 @@
 'use strict';
-
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
 var fs = require('fs');
 var jsonfile = require('jsonfile')
 var request = require('request');
 var cheerio = require('cheerio');
 var bodyParser = require('body-parser');
+var dburl = 'mongodb://localhost:27017/fundsmanager';
 
 var files = [
     '../data/mediolanum-1.htm',
@@ -77,11 +79,19 @@ function retrieveFundData(url, index, total) {
 
 }// retrieveFundData
 
+
+/**
+ * Parse the body of a fund retrieved from MorningStar
+ * 
+ * @param {String} fund - Fund body
+ * @return {Object} - JSON with name, isin, sectors and  
+ *                    regions; null if an error occurs
+ */
 function parseFundBody(fund) {
     var $ = cheerio.load(fund);
-    var info={};
-    info.sectors=[];
-    info.regions=[];
+    var info = {};
+    info.sectors = [];
+    info.regions = [];
 
     try{
 	info.name = $(".snapshotTitleBox h1")[0].children[0].data;
@@ -140,13 +150,31 @@ Promise.all(listOfPromises).then(function (fundbodies) {
 	    fundsInfo.push(info);
 	}
     }
-    
-   for (let i=0; i<fundbodies.length; i++) {
-	jsonfile.writeFileSync("output.json", fundsInfo);
-   }// for
 
+    MongoClient.connect(dburl, function(err, db) {
+	if (err) {
+	    console.error("Error connection do MongoDB");
+	    console.error(err);
+	};
+	
+	var collection = db.collection('funds');
+
+	for (let i=0; i<fundsInfo.length; i++) {
+	    collection.insert(fundsInfo[i], function(err, result) {
+		if (err) {
+		    console.error("Error inserting document in MongoDB");
+		    console.error(err);
+		}
+	    });
+	}// for
+
+	db.close();
+    });
+    
 });
 
-// http://docs.sequelizejs.com/en/v3/
-// TODO: crear objeto con los datos de cada fondo
-// y meterlo en bbdd mediante el ORM
+process.on('uncaughtException', function (exception) {
+    console.log(exception); // to see your exception details in the console
+    // if you are on production, maybe you can send the exception details to your
+    // email as well ?
+});
