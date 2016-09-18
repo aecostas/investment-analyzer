@@ -1,4 +1,5 @@
 'use strict';
+
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var fs = require('fs');
@@ -42,6 +43,15 @@ function parseListOfFunds(body) {
 }// parseListOfFunds
 
 
+/**
+ * Returns an array of objects with the name 
+ * and the URL of each fund
+ *
+ * @param {String[]} - Array of filenames. Each file 
+ * corresponds to a search performed on MorningStar
+ *
+ * @return List of funds
+ */
 function getListOfFunds(files) {
     let totalfunds = [];
     for (let i=0; i<files.length; i++) {
