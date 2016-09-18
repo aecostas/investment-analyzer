@@ -6,7 +6,8 @@ var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 var bodyParser = require('body-parser');
-var dburl = 'mongodb://localhost:27017/fundsmanager';
+var dburl = 'mongodb://localhost:27017/fundsmanager2';
+var locales = require("../locales")
 
 var files = [
     '../data/mediolanum-1.htm',
@@ -117,7 +118,7 @@ function parseFundBody(fund) {
 
 	try {
 	    info.regions.push({
-		"region": children[0].children[0].data,
+		"region": locales.getRegionCode(children[0].children[0].data),
 		"percentage": parseFloat(children[1].children[0].data.replace(',','.'))
 	    });
 	} catch(err) {
@@ -131,7 +132,7 @@ function parseFundBody(fund) {
 	var children = $(this).children();
 	try {
 	    info.sectors.push({
-		"sector": children[0].children[0].data,
+		"sector": locales.getSectorCode(children[0].children[0].data),
 		"percentage": parseFloat(children[1].children[0].data.replace(',','.')),
 	    });
 	} catch(err) {
@@ -146,6 +147,7 @@ function parseFundBody(fund) {
 
 let listOfFunds = getListOfFunds(files);
 let listOfPromises = [];
+
 
 for (let i=0; i<listOfFunds.length; i++) {
     listOfPromises.push(retrieveFundData(listOfFunds[i].url, i, listOfFunds.length));

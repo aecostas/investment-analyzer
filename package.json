@@ -19,7 +19,8 @@
       "cheerio": "*",
       "rgb-scale": "0.0.2",
       "node-getopt": "0.2.3",
-      "jsonfile": "2.3.1"
+      "jsonfile": "2.3.1",
+      "mongodb": "2.2.10"
   },
   "repository": {},
     "devDependencies": {
