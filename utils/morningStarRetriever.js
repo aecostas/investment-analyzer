@@ -6,7 +6,7 @@ var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 var bodyParser = require('body-parser');
-var dburl = 'mongodb://localhost:27017/fundsmanager2';
+var dburl = 'mongodb://localhost:27017/fundsmanager';
 var locales = require("../locales")
 
 var files = [
@@ -128,12 +128,12 @@ function parseFundBody(fund) {
 	}
     });
 
-    $(".overviewTopRegionsTable tr").slice(1).each(function() {
+    $(".overviewTopSectorsTable tr").slice(1).each(function() {
 	var children = $(this).children();
 	try {
 	    info.sectors.push({
-		"sector": locales.getSectorCode(children[0].children[0].data),
-		"percentage": parseFloat(children[1].children[0].data.replace(',','.')),
+		"sector": locales.getSectorCode(children[1].children[0].data),
+		"percentage": parseFloat(children[2].children[0].data.replace(',','.')),
 	    });
 	} catch(err) {
 	    console.error("Error parsing sector");
@@ -157,6 +157,7 @@ Promise.all(listOfPromises).then(function (fundbodies) {
 
     for (let i=0; i<fundbodies.length; i++) {
 	let info = parseFundBody(fundbodies[i]);
+
 	if (info!=null) {
 	    fundsInfo.push(info);
 	}
