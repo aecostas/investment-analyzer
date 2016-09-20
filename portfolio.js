@@ -9,6 +9,8 @@ class Portfolio {
     constructor() {
 	this.token = "aaaaa";
 	this.funds = {};
+	this.stats = {};
+	var self = this;
     }
 
     _calculate() {
@@ -37,12 +39,14 @@ class Portfolio {
 		}
 	    })
 	})
-
+	
+	return results;
+	
     }// calculate
 
     remove(isin) {
 	delete this.funds[isin];
-	this._calculate();
+	this.stats = this._calculate();
     }
 
     add(isin) {
@@ -61,15 +65,16 @@ class Portfolio {
 		    assert.equal(err,null);
 		    self.funds[isin] = docs;
 		    db.close();
-		    self._calculate();
+		    self.stats = self._calculate();
 		    resolve();
 		})
 	    });
 	})
     }// add
 
-
-    
+    summary() {
+	return this.stats;
+    }
 }
 
 module.exports = Portfolio;
