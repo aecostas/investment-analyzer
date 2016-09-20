@@ -133,9 +133,9 @@ function retrieveFundData(fund) {
  */
 function parseFundSectors(fund) {
     var $ = cheerio.load(fund.body);
-    var sectors=[]
+    var sectors=[];
     $(".portfolioSectorBreakdownTable tr").slice(3).each(function() {
-	var children = $(this).children()
+	var children = $(this).children();
 	try {
 	    var sector = {
 		"sector": getSectorCode(children[0].children[1].data),
