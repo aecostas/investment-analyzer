@@ -1,0 +1,3632 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              4,
+              15
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 4
+              },
+              "end": {
+                "line": 1,
+                "column": 15
+              }
+            }
+          },
+          "init": {
+            "type": "ObjectExpression",
+            "properties": [],
+            "range": [
+              18,
+              20
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 18
+              },
+              "end": {
+                "line": 1,
+                "column": 20
+              }
+            }
+          },
+          "range": [
+            4,
+            20
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 4
+            },
+            "end": {
+              "line": 1,
+              "column": 20
+            }
+          }
+        }
+      ],
+      "kind": "var",
+      "range": [
+        0,
+        21
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              26,
+              37
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 4
+              },
+              "end": {
+                "line": 2,
+                "column": 15
+              }
+            }
+          },
+          "init": {
+            "type": "ObjectExpression",
+            "properties": [],
+            "range": [
+              40,
+              42
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 18
+              },
+              "end": {
+                "line": 2,
+                "column": 20
+              }
+            }
+          },
+          "range": [
+            26,
+            42
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 4
+            },
+            "end": {
+              "line": 2,
+              "column": 20
+            }
+          }
+        }
+      ],
+      "kind": "var",
+      "range": [
+        22,
+        43
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              45,
+              56
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 0
+              },
+              "end": {
+                "line": 4,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Estados Unidos",
+            "raw": "'Estados Unidos'",
+            "range": [
+              57,
+              73
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 12
+              },
+              "end": {
+                "line": 4,
+                "column": 28
+              }
+            }
+          },
+          "range": [
+            45,
+            74
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 0
+            },
+            "end": {
+              "line": 4,
+              "column": 29
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "USA",
+          "raw": "'USA'",
+          "range": [
+            77,
+            82
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 32
+            },
+            "end": {
+              "line": 4,
+              "column": 37
+            }
+          }
+        },
+        "range": [
+          45,
+          82
+        ],
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 37
+          }
+        }
+      },
+      "range": [
+        45,
+        83
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              84,
+              95
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 5,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Iberoamérica",
+            "raw": "'Iberoamérica'",
+            "range": [
+              96,
+              110
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 12
+              },
+              "end": {
+                "line": 5,
+                "column": 26
+              }
+            }
+          },
+          "range": [
+            84,
+            111
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 5,
+              "column": 27
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "LATAM",
+          "raw": "'LATAM'",
+          "range": [
+            114,
+            121
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 30
+            },
+            "end": {
+              "line": 5,
+              "column": 37
+            }
+          }
+        },
+        "range": [
+          84,
+          121
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "line": 5,
+            "column": 37
+          }
+        }
+      },
+      "range": [
+        84,
+        122
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              123,
+              134
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 0
+              },
+              "end": {
+                "line": 6,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Reino Unido",
+            "raw": "'Reino Unido'",
+            "range": [
+              135,
+              148
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 12
+              },
+              "end": {
+                "line": 6,
+                "column": 25
+              }
+            }
+          },
+          "range": [
+            123,
+            149
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 26
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "GB",
+          "raw": "'GB'",
+          "range": [
+            152,
+            156
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 29
+            },
+            "end": {
+              "line": 6,
+              "column": 33
+            }
+          }
+        },
+        "range": [
+          123,
+          156
+        ],
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 33
+          }
+        }
+      },
+      "range": [
+        123,
+        157
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              158,
+              169
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 0
+              },
+              "end": {
+                "line": 7,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Canadá",
+            "raw": "'Canadá'",
+            "range": [
+              170,
+              178
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 12
+              },
+              "end": {
+                "line": 7,
+                "column": 20
+              }
+            }
+          },
+          "range": [
+            158,
+            179
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 21
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "CANADA",
+          "raw": "'CANADA'",
+          "range": [
+            182,
+            190
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 24
+            },
+            "end": {
+              "line": 7,
+              "column": 32
+            }
+          }
+        },
+        "range": [
+          158,
+          190
+        ],
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 0
+          },
+          "end": {
+            "line": 7,
+            "column": 32
+          }
+        }
+      },
+      "range": [
+        158,
+        191
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              192,
+              203
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 0
+              },
+              "end": {
+                "line": 8,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Zona Euro",
+            "raw": "'Zona Euro'",
+            "range": [
+              204,
+              215
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 12
+              },
+              "end": {
+                "line": 8,
+                "column": 23
+              }
+            }
+          },
+          "range": [
+            192,
+            216
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 8,
+              "column": 24
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "EUROZONE",
+          "raw": "'EUROZONE'",
+          "range": [
+            219,
+            229
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 27
+            },
+            "end": {
+              "line": 8,
+              "column": 37
+            }
+          }
+        },
+        "range": [
+          192,
+          229
+        ],
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 0
+          },
+          "end": {
+            "line": 8,
+            "column": 37
+          }
+        }
+      },
+      "range": [
+        192,
+        230
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              231,
+              242
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 0
+              },
+              "end": {
+                "line": 9,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Europe - ex Euro",
+            "raw": "'Europe - ex Euro'",
+            "range": [
+              243,
+              261
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 12
+              },
+              "end": {
+                "line": 9,
+                "column": 30
+              }
+            }
+          },
+          "range": [
+            231,
+            262
+          ],
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 0
+            },
+            "end": {
+              "line": 9,
+              "column": 31
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "EUROEXEURO",
+          "raw": "'EUROEXEURO'",
+          "range": [
+            265,
+            277
+          ],
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 34
+            },
+            "end": {
+              "line": 9,
+              "column": 46
+            }
+          }
+        },
+        "range": [
+          231,
+          277
+        ],
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 0
+          },
+          "end": {
+            "line": 9,
+            "column": 46
+          }
+        }
+      },
+      "range": [
+        231,
+        278
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              279,
+              290
+            ],
+            "loc": {
+              "start": {
+                "line": 10,
+                "column": 0
+              },
+              "end": {
+                "line": 10,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "África",
+            "raw": "'África'",
+            "range": [
+              291,
+              299
+            ],
+            "loc": {
+              "start": {
+                "line": 10,
+                "column": 12
+              },
+              "end": {
+                "line": 10,
+                "column": 20
+              }
+            }
+          },
+          "range": [
+            279,
+            300
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 0
+            },
+            "end": {
+              "line": 10,
+              "column": 21
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "AFRICA",
+          "raw": "'AFRICA'",
+          "range": [
+            303,
+            311
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 24
+            },
+            "end": {
+              "line": 10,
+              "column": 32
+            }
+          }
+        },
+        "range": [
+          279,
+          311
+        ],
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 0
+          },
+          "end": {
+            "line": 10,
+            "column": 32
+          }
+        }
+      },
+      "range": [
+        279,
+        312
+      ],
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              313,
+              324
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 0
+              },
+              "end": {
+                "line": 11,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Oriente Medio",
+            "raw": "'Oriente Medio'",
+            "range": [
+              325,
+              340
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 12
+              },
+              "end": {
+                "line": 11,
+                "column": 27
+              }
+            }
+          },
+          "range": [
+            313,
+            341
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 0
+            },
+            "end": {
+              "line": 11,
+              "column": 28
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "MIDDLEEAST",
+          "raw": "'MIDDLEEAST'",
+          "range": [
+            344,
+            356
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 31
+            },
+            "end": {
+              "line": 11,
+              "column": 43
+            }
+          }
+        },
+        "range": [
+          313,
+          356
+        ],
+        "loc": {
+          "start": {
+            "line": 11,
+            "column": 0
+          },
+          "end": {
+            "line": 11,
+            "column": 43
+          }
+        }
+      },
+      "range": [
+        313,
+        357
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              358,
+              369
+            ],
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 0
+              },
+              "end": {
+                "line": 12,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Japón",
+            "raw": "'Japón'",
+            "range": [
+              370,
+              377
+            ],
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 12
+              },
+              "end": {
+                "line": 12,
+                "column": 19
+              }
+            }
+          },
+          "range": [
+            358,
+            378
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 0
+            },
+            "end": {
+              "line": 12,
+              "column": 20
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "JAPAN",
+          "raw": "'JAPAN'",
+          "range": [
+            381,
+            388
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 23
+            },
+            "end": {
+              "line": 12,
+              "column": 30
+            }
+          }
+        },
+        "range": [
+          358,
+          388
+        ],
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 0
+          },
+          "end": {
+            "line": 12,
+            "column": 30
+          }
+        }
+      },
+      "range": [
+        358,
+        389
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "line": 12,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              390,
+              401
+            ],
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 0
+              },
+              "end": {
+                "line": 13,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Australasia",
+            "raw": "'Australasia'",
+            "range": [
+              402,
+              415
+            ],
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 12
+              },
+              "end": {
+                "line": 13,
+                "column": 25
+              }
+            }
+          },
+          "range": [
+            390,
+            416
+          ],
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 0
+            },
+            "end": {
+              "line": 13,
+              "column": 26
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "AUSTRALASIA",
+          "raw": "'AUSTRALASIA'",
+          "range": [
+            419,
+            432
+          ],
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 29
+            },
+            "end": {
+              "line": 13,
+              "column": 42
+            }
+          }
+        },
+        "range": [
+          390,
+          432
+        ],
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 0
+          },
+          "end": {
+            "line": 13,
+            "column": 42
+          }
+        }
+      },
+      "range": [
+        390,
+        433
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 13,
+          "column": 43
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              434,
+              445
+            ],
+            "loc": {
+              "start": {
+                "line": 14,
+                "column": 0
+              },
+              "end": {
+                "line": 14,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Asia - Desarrollada",
+            "raw": "'Asia - Desarrollada'",
+            "range": [
+              446,
+              467
+            ],
+            "loc": {
+              "start": {
+                "line": 14,
+                "column": 12
+              },
+              "end": {
+                "line": 14,
+                "column": 33
+              }
+            }
+          },
+          "range": [
+            434,
+            468
+          ],
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 0
+            },
+            "end": {
+              "line": 14,
+              "column": 34
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "ASIADEVELOPED",
+          "raw": "'ASIADEVELOPED'",
+          "range": [
+            471,
+            486
+          ],
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 37
+            },
+            "end": {
+              "line": 14,
+              "column": 52
+            }
+          }
+        },
+        "range": [
+          434,
+          486
+        ],
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 0
+          },
+          "end": {
+            "line": 14,
+            "column": 52
+          }
+        }
+      },
+      "range": [
+        434,
+        487
+      ],
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 0
+        },
+        "end": {
+          "line": 14,
+          "column": 53
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              488,
+              499
+            ],
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 0
+              },
+              "end": {
+                "line": 15,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Asia - Emergente",
+            "raw": "'Asia - Emergente'",
+            "range": [
+              500,
+              518
+            ],
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 12
+              },
+              "end": {
+                "line": 15,
+                "column": 30
+              }
+            }
+          },
+          "range": [
+            488,
+            519
+          ],
+          "loc": {
+            "start": {
+              "line": 15,
+              "column": 0
+            },
+            "end": {
+              "line": 15,
+              "column": 31
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "ASIAEMERGING",
+          "raw": "'ASIAEMERGING'",
+          "range": [
+            522,
+            536
+          ],
+          "loc": {
+            "start": {
+              "line": 15,
+              "column": 34
+            },
+            "end": {
+              "line": 15,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          488,
+          536
+        ],
+        "loc": {
+          "start": {
+            "line": 15,
+            "column": 0
+          },
+          "end": {
+            "line": 15,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        488,
+        537
+      ],
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "regionCodes",
+            "range": [
+              538,
+              549
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 0
+              },
+              "end": {
+                "line": 16,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Europe emergente",
+            "raw": "'Europe emergente'",
+            "range": [
+              550,
+              568
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 12
+              },
+              "end": {
+                "line": 16,
+                "column": 30
+              }
+            }
+          },
+          "range": [
+            538,
+            569
+          ],
+          "loc": {
+            "start": {
+              "line": 16,
+              "column": 0
+            },
+            "end": {
+              "line": 16,
+              "column": 31
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "EUROEMERGING",
+          "raw": "'EUROEMERGING'",
+          "range": [
+            572,
+            586
+          ],
+          "loc": {
+            "start": {
+              "line": 16,
+              "column": 34
+            },
+            "end": {
+              "line": 16,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          538,
+          586
+        ],
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 0
+          },
+          "end": {
+            "line": 16,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        538,
+        587
+      ],
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 0
+        },
+        "end": {
+          "line": 16,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              589,
+              600
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 0
+              },
+              "end": {
+                "line": 18,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Materiales Básicos",
+            "raw": "'Materiales Básicos'",
+            "range": [
+              601,
+              621
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 12
+              },
+              "end": {
+                "line": 18,
+                "column": 32
+              }
+            }
+          },
+          "range": [
+            589,
+            622
+          ],
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 0
+            },
+            "end": {
+              "line": 18,
+              "column": 33
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "BASICMATERIALS",
+          "raw": "'BASICMATERIALS'",
+          "range": [
+            624,
+            640
+          ],
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 35
+            },
+            "end": {
+              "line": 18,
+              "column": 51
+            }
+          }
+        },
+        "range": [
+          589,
+          640
+        ],
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 0
+          },
+          "end": {
+            "line": 18,
+            "column": 51
+          }
+        }
+      },
+      "range": [
+        589,
+        641
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 0
+        },
+        "end": {
+          "line": 18,
+          "column": 52
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              642,
+              653
+            ],
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 0
+              },
+              "end": {
+                "line": 19,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Consumo Cíclico",
+            "raw": "'Consumo Cíclico'",
+            "range": [
+              654,
+              671
+            ],
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 12
+              },
+              "end": {
+                "line": 19,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            642,
+            672
+          ],
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 0
+            },
+            "end": {
+              "line": 19,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "CYCLICALCONSUMER",
+          "raw": "'CYCLICALCONSUMER'",
+          "range": [
+            674,
+            692
+          ],
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 32
+            },
+            "end": {
+              "line": 19,
+              "column": 50
+            }
+          }
+        },
+        "range": [
+          642,
+          692
+        ],
+        "loc": {
+          "start": {
+            "line": 19,
+            "column": 0
+          },
+          "end": {
+            "line": 19,
+            "column": 50
+          }
+        }
+      },
+      "range": [
+        642,
+        693
+      ],
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 51
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              694,
+              705
+            ],
+            "loc": {
+              "start": {
+                "line": 20,
+                "column": 0
+              },
+              "end": {
+                "line": 20,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Servicios Financieros",
+            "raw": "'Servicios Financieros'",
+            "range": [
+              706,
+              729
+            ],
+            "loc": {
+              "start": {
+                "line": 20,
+                "column": 12
+              },
+              "end": {
+                "line": 20,
+                "column": 35
+              }
+            }
+          },
+          "range": [
+            694,
+            730
+          ],
+          "loc": {
+            "start": {
+              "line": 20,
+              "column": 0
+            },
+            "end": {
+              "line": 20,
+              "column": 36
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "FINANCIAL",
+          "raw": "'FINANCIAL'",
+          "range": [
+            732,
+            743
+          ],
+          "loc": {
+            "start": {
+              "line": 20,
+              "column": 38
+            },
+            "end": {
+              "line": 20,
+              "column": 49
+            }
+          }
+        },
+        "range": [
+          694,
+          743
+        ],
+        "loc": {
+          "start": {
+            "line": 20,
+            "column": 0
+          },
+          "end": {
+            "line": 20,
+            "column": 49
+          }
+        }
+      },
+      "range": [
+        694,
+        744
+      ],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 0
+        },
+        "end": {
+          "line": 20,
+          "column": 50
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              745,
+              756
+            ],
+            "loc": {
+              "start": {
+                "line": 21,
+                "column": 0
+              },
+              "end": {
+                "line": 21,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Inmobiliario",
+            "raw": "'Inmobiliario'",
+            "range": [
+              757,
+              771
+            ],
+            "loc": {
+              "start": {
+                "line": 21,
+                "column": 12
+              },
+              "end": {
+                "line": 21,
+                "column": 26
+              }
+            }
+          },
+          "range": [
+            745,
+            772
+          ],
+          "loc": {
+            "start": {
+              "line": 21,
+              "column": 0
+            },
+            "end": {
+              "line": 21,
+              "column": 27
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "INMO",
+          "raw": "'INMO'",
+          "range": [
+            774,
+            780
+          ],
+          "loc": {
+            "start": {
+              "line": 21,
+              "column": 29
+            },
+            "end": {
+              "line": 21,
+              "column": 35
+            }
+          }
+        },
+        "range": [
+          745,
+          780
+        ],
+        "loc": {
+          "start": {
+            "line": 21,
+            "column": 0
+          },
+          "end": {
+            "line": 21,
+            "column": 35
+          }
+        }
+      },
+      "range": [
+        745,
+        781
+      ],
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              782,
+              793
+            ],
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 0
+              },
+              "end": {
+                "line": 22,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Consumo Defensivo",
+            "raw": "'Consumo Defensivo'",
+            "range": [
+              794,
+              813
+            ],
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 12
+              },
+              "end": {
+                "line": 22,
+                "column": 31
+              }
+            }
+          },
+          "range": [
+            782,
+            814
+          ],
+          "loc": {
+            "start": {
+              "line": 22,
+              "column": 0
+            },
+            "end": {
+              "line": 22,
+              "column": 32
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "DEFENSIVE",
+          "raw": "'DEFENSIVE'",
+          "range": [
+            816,
+            827
+          ],
+          "loc": {
+            "start": {
+              "line": 22,
+              "column": 34
+            },
+            "end": {
+              "line": 22,
+              "column": 45
+            }
+          }
+        },
+        "range": [
+          782,
+          827
+        ],
+        "loc": {
+          "start": {
+            "line": 22,
+            "column": 0
+          },
+          "end": {
+            "line": 22,
+            "column": 45
+          }
+        }
+      },
+      "range": [
+        782,
+        828
+      ],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 0
+        },
+        "end": {
+          "line": 22,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              829,
+              840
+            ],
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 0
+              },
+              "end": {
+                "line": 23,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Salud",
+            "raw": "'Salud'",
+            "range": [
+              841,
+              848
+            ],
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 12
+              },
+              "end": {
+                "line": 23,
+                "column": 19
+              }
+            }
+          },
+          "range": [
+            829,
+            849
+          ],
+          "loc": {
+            "start": {
+              "line": 23,
+              "column": 0
+            },
+            "end": {
+              "line": 23,
+              "column": 20
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "HEALTH",
+          "raw": "'HEALTH'",
+          "range": [
+            851,
+            859
+          ],
+          "loc": {
+            "start": {
+              "line": 23,
+              "column": 22
+            },
+            "end": {
+              "line": 23,
+              "column": 30
+            }
+          }
+        },
+        "range": [
+          829,
+          859
+        ],
+        "loc": {
+          "start": {
+            "line": 23,
+            "column": 0
+          },
+          "end": {
+            "line": 23,
+            "column": 30
+          }
+        }
+      },
+      "range": [
+        829,
+        860
+      ],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "line": 23,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              861,
+              872
+            ],
+            "loc": {
+              "start": {
+                "line": 24,
+                "column": 0
+              },
+              "end": {
+                "line": 24,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Servicios Públicos",
+            "raw": "'Servicios Públicos'",
+            "range": [
+              873,
+              893
+            ],
+            "loc": {
+              "start": {
+                "line": 24,
+                "column": 12
+              },
+              "end": {
+                "line": 24,
+                "column": 32
+              }
+            }
+          },
+          "range": [
+            861,
+            894
+          ],
+          "loc": {
+            "start": {
+              "line": 24,
+              "column": 0
+            },
+            "end": {
+              "line": 24,
+              "column": 33
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "PUBLICSERVICES",
+          "raw": "'PUBLICSERVICES'",
+          "range": [
+            896,
+            912
+          ],
+          "loc": {
+            "start": {
+              "line": 24,
+              "column": 35
+            },
+            "end": {
+              "line": 24,
+              "column": 51
+            }
+          }
+        },
+        "range": [
+          861,
+          912
+        ],
+        "loc": {
+          "start": {
+            "line": 24,
+            "column": 0
+          },
+          "end": {
+            "line": 24,
+            "column": 51
+          }
+        }
+      },
+      "range": [
+        861,
+        913
+      ],
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 0
+        },
+        "end": {
+          "line": 24,
+          "column": 52
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              914,
+              925
+            ],
+            "loc": {
+              "start": {
+                "line": 25,
+                "column": 0
+              },
+              "end": {
+                "line": 25,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Servicios de Comunicación",
+            "raw": "'Servicios de Comunicación'",
+            "range": [
+              926,
+              953
+            ],
+            "loc": {
+              "start": {
+                "line": 25,
+                "column": 12
+              },
+              "end": {
+                "line": 25,
+                "column": 39
+              }
+            }
+          },
+          "range": [
+            914,
+            954
+          ],
+          "loc": {
+            "start": {
+              "line": 25,
+              "column": 0
+            },
+            "end": {
+              "line": 25,
+              "column": 40
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "COM",
+          "raw": "'COM'",
+          "range": [
+            956,
+            961
+          ],
+          "loc": {
+            "start": {
+              "line": 25,
+              "column": 42
+            },
+            "end": {
+              "line": 25,
+              "column": 47
+            }
+          }
+        },
+        "range": [
+          914,
+          961
+        ],
+        "loc": {
+          "start": {
+            "line": 25,
+            "column": 0
+          },
+          "end": {
+            "line": 25,
+            "column": 47
+          }
+        }
+      },
+      "range": [
+        914,
+        962
+      ],
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 0
+        },
+        "end": {
+          "line": 25,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              963,
+              974
+            ],
+            "loc": {
+              "start": {
+                "line": 26,
+                "column": 0
+              },
+              "end": {
+                "line": 26,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Energía",
+            "raw": "'Energía'",
+            "range": [
+              975,
+              984
+            ],
+            "loc": {
+              "start": {
+                "line": 26,
+                "column": 12
+              },
+              "end": {
+                "line": 26,
+                "column": 21
+              }
+            }
+          },
+          "range": [
+            963,
+            985
+          ],
+          "loc": {
+            "start": {
+              "line": 26,
+              "column": 0
+            },
+            "end": {
+              "line": 26,
+              "column": 22
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "ENERGY",
+          "raw": "'ENERGY'",
+          "range": [
+            987,
+            995
+          ],
+          "loc": {
+            "start": {
+              "line": 26,
+              "column": 24
+            },
+            "end": {
+              "line": 26,
+              "column": 32
+            }
+          }
+        },
+        "range": [
+          963,
+          995
+        ],
+        "loc": {
+          "start": {
+            "line": 26,
+            "column": 0
+          },
+          "end": {
+            "line": 26,
+            "column": 32
+          }
+        }
+      },
+      "range": [
+        963,
+        996
+      ],
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 0
+        },
+        "end": {
+          "line": 26,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              997,
+              1008
+            ],
+            "loc": {
+              "start": {
+                "line": 27,
+                "column": 0
+              },
+              "end": {
+                "line": 27,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Industria",
+            "raw": "'Industria'",
+            "range": [
+              1009,
+              1020
+            ],
+            "loc": {
+              "start": {
+                "line": 27,
+                "column": 12
+              },
+              "end": {
+                "line": 27,
+                "column": 23
+              }
+            }
+          },
+          "range": [
+            997,
+            1021
+          ],
+          "loc": {
+            "start": {
+              "line": 27,
+              "column": 0
+            },
+            "end": {
+              "line": 27,
+              "column": 24
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "INDUSTRY",
+          "raw": "'INDUSTRY'",
+          "range": [
+            1023,
+            1033
+          ],
+          "loc": {
+            "start": {
+              "line": 27,
+              "column": 26
+            },
+            "end": {
+              "line": 27,
+              "column": 36
+            }
+          }
+        },
+        "range": [
+          997,
+          1033
+        ],
+        "loc": {
+          "start": {
+            "line": 27,
+            "column": 0
+          },
+          "end": {
+            "line": 27,
+            "column": 36
+          }
+        }
+      },
+      "range": [
+        997,
+        1034
+      ],
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 0
+        },
+        "end": {
+          "line": 27,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "Identifier",
+            "name": "sectorCodes",
+            "range": [
+              1035,
+              1046
+            ],
+            "loc": {
+              "start": {
+                "line": 28,
+                "column": 0
+              },
+              "end": {
+                "line": 28,
+                "column": 11
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "Tecnología",
+            "raw": "'Tecnología'",
+            "range": [
+              1047,
+              1059
+            ],
+            "loc": {
+              "start": {
+                "line": 28,
+                "column": 12
+              },
+              "end": {
+                "line": 28,
+                "column": 24
+              }
+            }
+          },
+          "range": [
+            1035,
+            1060
+          ],
+          "loc": {
+            "start": {
+              "line": 28,
+              "column": 0
+            },
+            "end": {
+              "line": 28,
+              "column": 25
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "TECHNOLOGY",
+          "raw": "'TECHNOLOGY'",
+          "range": [
+            1062,
+            1074
+          ],
+          "loc": {
+            "start": {
+              "line": 28,
+              "column": 27
+            },
+            "end": {
+              "line": 28,
+              "column": 39
+            }
+          }
+        },
+        "range": [
+          1035,
+          1074
+        ],
+        "loc": {
+          "start": {
+            "line": 28,
+            "column": 0
+          },
+          "end": {
+            "line": 28,
+            "column": 39
+          }
+        }
+      },
+      "range": [
+        1035,
+        1075
+      ],
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 0
+        },
+        "end": {
+          "line": 28,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "module",
+            "range": [
+              1078,
+              1084
+            ],
+            "loc": {
+              "start": {
+                "line": 31,
+                "column": 0
+              },
+              "end": {
+                "line": 31,
+                "column": 6
+              }
+            }
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "exports",
+            "range": [
+              1085,
+              1092
+            ],
+            "loc": {
+              "start": {
+                "line": 31,
+                "column": 7
+              },
+              "end": {
+                "line": 31,
+                "column": 14
+              }
+            }
+          },
+          "range": [
+            1078,
+            1092
+          ],
+          "loc": {
+            "start": {
+              "line": 31,
+              "column": 0
+            },
+            "end": {
+              "line": 31,
+              "column": 14
+            }
+          }
+        },
+        "right": {
+          "type": "ObjectExpression",
+          "properties": [
+            {
+              "type": "Property",
+              "key": {
+                "type": "Identifier",
+                "name": "getRegionCode",
+                "range": [
+                  1306,
+                  1319
+                ],
+                "loc": {
+                  "start": {
+                    "line": 40,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 40,
+                    "column": 17
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "region",
+                    "range": [
+                      1330,
+                      1336
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 40,
+                        "column": 28
+                      },
+                      "end": {
+                        "line": 40,
+                        "column": 34
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "MemberExpression",
+                        "computed": true,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "regionCodes",
+                          "range": [
+                            1345,
+                            1356
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 41,
+                              "column": 5
+                            },
+                            "end": {
+                              "line": 41,
+                              "column": 16
+                            }
+                          }
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "region",
+                          "range": [
+                            1357,
+                            1363
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 41,
+                              "column": 17
+                            },
+                            "end": {
+                              "line": 41,
+                              "column": 23
+                            }
+                          }
+                        },
+                        "range": [
+                          1345,
+                          1364
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 41,
+                            "column": 5
+                          },
+                          "end": {
+                            "line": 41,
+                            "column": 24
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ReturnStatement",
+                            "argument": {
+                              "type": "MemberExpression",
+                              "computed": true,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "regionCodes",
+                                "range": [
+                                  1381,
+                                  1392
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 42,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 42,
+                                    "column": 23
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "region",
+                                "range": [
+                                  1393,
+                                  1399
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 42,
+                                    "column": 24
+                                  },
+                                  "end": {
+                                    "line": 42,
+                                    "column": 30
+                                  }
+                                }
+                              },
+                              "range": [
+                                1381,
+                                1400
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 42,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 42,
+                                  "column": 31
+                                }
+                              }
+                            },
+                            "range": [
+                              1374,
+                              1402
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 42,
+                                "column": 5
+                              },
+                              "end": {
+                                "line": 43,
+                                "column": 1
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1367,
+                          1403
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 41,
+                            "column": 27
+                          },
+                          "end": {
+                            "line": 43,
+                            "column": 2
+                          }
+                        }
+                      },
+                      "alternate": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ReturnStatement",
+                            "argument": {
+                              "type": "Identifier",
+                              "name": "region",
+                              "range": [
+                                1423,
+                                1429
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 44,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 44,
+                                  "column": 18
+                                }
+                              }
+                            },
+                            "range": [
+                              1416,
+                              1431
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 44,
+                                "column": 5
+                              },
+                              "end": {
+                                "line": 45,
+                                "column": 1
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1409,
+                          1432
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 43,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 45,
+                            "column": 2
+                          }
+                        }
+                      },
+                      "range": [
+                        1341,
+                        1432
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 41,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 45,
+                          "column": 2
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1338,
+                    1438
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 40,
+                      "column": 36
+                    },
+                    "end": {
+                      "line": 46,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  1321,
+                  1438
+                ],
+                "loc": {
+                  "start": {
+                    "line": 40,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 46,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "init",
+              "method": false,
+              "shorthand": false,
+              "computed": false,
+              "range": [
+                1306,
+                1438
+              ],
+              "loc": {
+                "start": {
+                  "line": 40,
+                  "column": 4
+                },
+                "end": {
+                  "line": 46,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * Translates the given string into \n     * an internal code representing\n     * a sector\n     *\n     * @param {string} sector - Parsed sector\n     * @return {string} Translated string\n     ",
+                  "range": [
+                    1101,
+                    1301
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 32,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 39,
+                      "column": 7
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Property",
+              "key": {
+                "type": "Identifier",
+                "name": "getSectorCode",
+                "range": [
+                  1650,
+                  1663
+                ],
+                "loc": {
+                  "start": {
+                    "line": 56,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 56,
+                    "column": 17
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "sector",
+                    "range": [
+                      1674,
+                      1680
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 56,
+                        "column": 28
+                      },
+                      "end": {
+                        "line": 56,
+                        "column": 34
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "MemberExpression",
+                        "computed": true,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "sectorCodes",
+                          "range": [
+                            1689,
+                            1700
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 57,
+                              "column": 5
+                            },
+                            "end": {
+                              "line": 57,
+                              "column": 16
+                            }
+                          }
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "sector",
+                          "range": [
+                            1701,
+                            1707
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 57,
+                              "column": 17
+                            },
+                            "end": {
+                              "line": 57,
+                              "column": 23
+                            }
+                          }
+                        },
+                        "range": [
+                          1689,
+                          1708
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 57,
+                            "column": 5
+                          },
+                          "end": {
+                            "line": 57,
+                            "column": 24
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ReturnStatement",
+                            "argument": {
+                              "type": "MemberExpression",
+                              "computed": true,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "sectorCodes",
+                                "range": [
+                                  1725,
+                                  1736
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 58,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 58,
+                                    "column": 23
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "sector",
+                                "range": [
+                                  1737,
+                                  1743
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 58,
+                                    "column": 24
+                                  },
+                                  "end": {
+                                    "line": 58,
+                                    "column": 30
+                                  }
+                                }
+                              },
+                              "range": [
+                                1725,
+                                1744
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 58,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 58,
+                                  "column": 31
+                                }
+                              }
+                            },
+                            "range": [
+                              1718,
+                              1746
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 58,
+                                "column": 5
+                              },
+                              "end": {
+                                "line": 59,
+                                "column": 1
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1711,
+                          1747
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 57,
+                            "column": 27
+                          },
+                          "end": {
+                            "line": 59,
+                            "column": 2
+                          }
+                        }
+                      },
+                      "alternate": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ReturnStatement",
+                            "argument": {
+                              "type": "Identifier",
+                              "name": "sector",
+                              "range": [
+                                1767,
+                                1773
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 60,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 60,
+                                  "column": 18
+                                }
+                              }
+                            },
+                            "range": [
+                              1760,
+                              1775
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 60,
+                                "column": 5
+                              },
+                              "end": {
+                                "line": 61,
+                                "column": 1
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1753,
+                          1776
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 59,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 61,
+                            "column": 2
+                          }
+                        }
+                      },
+                      "range": [
+                        1685,
+                        1776
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 57,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 61,
+                          "column": 2
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1682,
+                    1782
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 56,
+                      "column": 36
+                    },
+                    "end": {
+                      "line": 62,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  1665,
+                  1782
+                ],
+                "loc": {
+                  "start": {
+                    "line": 56,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 62,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "init",
+              "method": false,
+              "shorthand": false,
+              "computed": false,
+              "range": [
+                1650,
+                1782
+              ],
+              "loc": {
+                "start": {
+                  "line": 56,
+                  "column": 4
+                },
+                "end": {
+                  "line": 62,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * Translates the given string into \n     * an internal code representing\n     * a sector\n     *\n     * @param {string} sector - Parsed sector\n     * @return {string} Translated string\n     ",
+                  "range": [
+                    1445,
+                    1645
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 48,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 55,
+                      "column": 7
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "range": [
+            1095,
+            1784
+          ],
+          "loc": {
+            "start": {
+              "line": 31,
+              "column": 17
+            },
+            "end": {
+              "line": 63,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          1078,
+          1784
+        ],
+        "loc": {
+          "start": {
+            "line": 31,
+            "column": 0
+          },
+          "end": {
+            "line": 63,
+            "column": 1
+          }
+        }
+      },
+      "range": [
+        1078,
+        1785
+      ],
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 0
+        },
+        "end": {
+          "line": 63,
+          "column": 2
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Line",
+          "value": " module.exports",
+          "range": [
+            1785,
+            1802
+          ],
+          "loc": {
+            "start": {
+              "line": 63,
+              "column": 2
+            },
+            "end": {
+              "line": 63,
+              "column": 19
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    1785
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 63,
+      "column": 2
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n     * Translates the given string into \n     * an internal code representing\n     * a sector\n     *\n     * @param {string} sector - Parsed sector\n     * @return {string} Translated string\n     ",
+      "range": [
+        1101,
+        1301
+      ],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 4
+        },
+        "end": {
+          "line": 39,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * Translates the given string into \n     * an internal code representing\n     * a sector\n     *\n     * @param {string} sector - Parsed sector\n     * @return {string} Translated string\n     ",
+      "range": [
+        1445,
+        1645
+      ],
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 4
+        },
+        "end": {
+          "line": 55,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " module.exports",
+      "range": [
+        1785,
+        1802
+      ],
+      "loc": {
+        "start": {
+          "line": 63,
+          "column": 2
+        },
+        "end": {
+          "line": 63,
+          "column": 19
+        }
+      }
+    }
+  ]
+}

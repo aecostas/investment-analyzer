@@ -15,17 +15,17 @@ regionCodes['Asia - Desarrollada'] = 'ASIADEVELOPED';
 regionCodes['Asia - Emergente'] = 'ASIAEMERGING';
 regionCodes['Europe emergente'] = 'EUROEMERGING';
 
-sectorCodes['Materiales Básicos'] ='BASICMATERIALS';
-sectorCodes['Consumo Cíclico'] ='CYCLICALCONSUMER';
-sectorCodes['Servicios Financieros'] ='FINANCIAL';
-sectorCodes['Inmobiliario'] ='INMO';
-sectorCodes['Consumo Defensivo'] ='DEFENSIVE';
-sectorCodes['Salud'] ='HEALTH';
-sectorCodes['Servicios Públicos'] ='PUBLICSERVICES';
-sectorCodes['Servicios de Comunicación'] ='COM';
-sectorCodes['Energía'] ='ENERGY';
-sectorCodes['Industria'] ='INDUSTRY';
-sectorCodes['Tecnología'] ='TECHNOLOGY';
+sectorCodes['Materiales Básicos'] = 'BASICMATERIALS';
+sectorCodes['Consumo Cíclico'] = 'CYCLICALCONSUMER';
+sectorCodes['Servicios Financieros'] = 'FINANCIAL';
+sectorCodes['Inmobiliario'] = 'INMO';
+sectorCodes['Consumo Defensivo'] = 'DEFENSIVE';
+sectorCodes['Salud'] = 'HEALTH';
+sectorCodes['Servicios Públicos'] = 'PUBLICSERVICES';
+sectorCodes['Servicios de Comunicación'] = 'COM';
+sectorCodes['Energía'] = 'ENERGY';
+sectorCodes['Industria'] = 'INDUSTRY';
+sectorCodes['Tecnología'] = 'TECHNOLOGY';
 
 
 module.exports = {
@@ -38,10 +38,10 @@ module.exports = {
      * @return {string} Translated string
      */
     getRegionCode: function(region) {
-	if (regionCodes[region] ) {
-	    return regionCodes[region]
+	if (regionCodes[region]) {
+	    return regionCodes[region];
 	} else {
-	    return region
+	    return region;
 	}
     },
 
@@ -54,10 +54,10 @@ module.exports = {
      * @return {string} Translated string
      */
     getSectorCode: function(sector) {
-	if (sectorCodes[sector] ) {
-	    return sectorCodes[sector]
+	if (sectorCodes[sector]) {
+	    return sectorCodes[sector];
 	} else {
-	    return sector
+	    return sector;
 	}
-    }
+    },
 };// module.exports

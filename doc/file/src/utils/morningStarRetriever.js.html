@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/utils/morningStarRetriever.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/utils/morningStarRetriever.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+var MongoClient = require(&apos;mongodb&apos;).MongoClient;
+var assert = require(&apos;assert&apos;);
+var fs = require(&apos;fs&apos;);
+var request = require(&apos;request&apos;);
+var cheerio = require(&apos;cheerio&apos;);
+var bodyParser = require(&apos;body-parser&apos;);
+var dburl = &apos;mongodb://localhost:27017/fundsmanager&apos;;
+var locales = require(&quot;../locales&quot;)
+
+var files = [
+    &apos;../data/mediolanum-1.htm&apos;,
+    &apos;../data/mediolanum-2.htm&apos;,
+    &apos;../data/mediolanum-3.htm&apos;
+];
+
+var fundsInfo = [];
+
+/**
+ * Parse a file result of a search on
+ * MorningStar with the aim of getting
+ * a list of funds with the name and
+ * the URL with the details of it
+ *
+ * @param String MorningStart search in HTML
+ *
+ * @return Array[Object] {url, name}
+ */
+function parseListOfFunds(body) {
+    let funds = [];
+    var $ = cheerio.load(body);
+
+    $(&quot;#ctl00_ctl00_MainContent_Layout_1MainContent_gridResult tr&quot;).slice(1).each(function() {
+	var children = $(this).children();
+	var fund = {
+	    url: children[1].children[0].attribs.href,
+	    name: children[1].children[0].attribs.title
+	}
+
+	funds.push(fund);
+    });
+    return funds;
+}// parseListOfFunds
+
+
+/**
+ * Returns an array of objects with the name 
+ * and the URL of each fund
+ *
+ * @param {String[]} - Array of filenames. Each file 
+ * corresponds to a search performed on MorningStar
+ *
+ * @return List of funds
+ */
+function getListOfFunds(files) {
+    let totalfunds = [];
+    for (let i=0; i&lt;files.length; i++) {
+	let filecontents = fs.readFileSync(files[i], &apos;utf8&apos;);
+	var funds = parseListOfFunds(filecontents);
+	Array.prototype.push.apply(totalfunds, funds);
+    } // for
+
+    return totalfunds;
+}// getListOfFunds
+
+
+/**
+ * Retrieve the URL indicated in the fund
+ * @param {Object} fund - fund.url URL to retrieve
+ * @return {Promise}
+ */
+function retrieveFundData(url, index, total) {
+
+    return new Promise(function(resolve, reject) {
+	request({
+	    uri:url
+	}, function(error, response, body) {
+	    if (error) {
+		console.warn(error);
+	    }
+	    
+	    console.warn(&quot;[&quot;,index,&quot;/&quot;,total,&quot;]     &quot;, url);
+
+	    // TODO: handle errors
+	    resolve(body);
+	})
+    })// Promise
+
+}// retrieveFundData
+
+
+/**
+ * Parse the body of a fund retrieved from MorningStar
+ * 
+ * @param {String} fund - Fund body
+ * @return {Object} - JSON with name, isin, sectors and  
+ *                    regions; null if an error occurs
+ */
+function parseFundBody(fund) {
+    var $ = cheerio.load(fund);
+    var info = {};
+    info.sectors = [];
+    info.regions = [];
+
+    try{
+	info.name = $(&quot;.snapshotTitleBox h1&quot;)[0].children[0].data;
+    }catch (err) {
+	console.error(&quot;Error parsing name. Continuing...&quot;);
+	console.error(err);
+	return null;
+    }
+
+    info.isin = $(&quot;.overviewKeyStatsTable tr&quot;).slice(4).children()[2].children[0].data;
+
+    $(&quot;.overviewTopRegionsTable tr&quot;).slice(1).each(function() {
+	var children = $(this).children();
+
+	try {
+	    info.regions.push({
+		&quot;region&quot;: locales.getRegionCode(children[0].children[0].data),
+		&quot;percentage&quot;: parseFloat(children[1].children[0].data.replace(&apos;,&apos;,&apos;.&apos;))
+	    });
+	} catch(err) {
+	    console.warn(&quot;Error parsing region&quot;);
+	    console.error(err);
+	    info.regions.push({});
+	}
+    });
+
+    $(&quot;.overviewTopSectorsTable tr&quot;).slice(1).each(function() {
+	var children = $(this).children();
+	try {
+	    info.sectors.push({
+		&quot;sector&quot;: locales.getSectorCode(children[1].children[0].data),
+		&quot;percentage&quot;: parseFloat(children[2].children[0].data.replace(&apos;,&apos;,&apos;.&apos;)),
+	    });
+	} catch(err) {
+	    console.error(&quot;Error parsing sector&quot;);
+	    console.error(err);
+	    info.sectors.push({});
+	}
+    });
+
+    return info;
+}// parseFundBody
+
+let listOfFunds = getListOfFunds(files);
+let listOfPromises = [];
+
+
+for (let i=0; i&lt;listOfFunds.length; i++) {
+    listOfPromises.push(retrieveFundData(listOfFunds[i].url, i, listOfFunds.length));
+}// for
+
+Promise.all(listOfPromises).then(function (fundbodies) {
+
+    for (let i=0; i&lt;fundbodies.length; i++) {
+	let info = parseFundBody(fundbodies[i]);
+
+	if (info!=null) {
+	    fundsInfo.push(info);
+	}
+    }
+
+    MongoClient.connect(dburl, function(err, db) {
+	if (err) {
+	    console.error(&quot;Error connection do MongoDB&quot;);
+	    console.error(err);
+	};
+	
+	var collection = db.collection(&apos;funds&apos;);
+
+	for (let i=0; i&lt;fundsInfo.length; i++) {
+	    collection.insert(fundsInfo[i], function(err, result) {
+		if (err) {
+		    console.error(&quot;Error inserting document&#xA0;in MongoDB&quot;);
+		    console.error(err);
+		}
+	    });
+	}// for
+
+	db.close();
+    });
+    
+});
+
+process.on(&apos;uncaughtException&apos;, function (exception) {
+    console.log(exception); // to see your exception details in the console
+    // if you are on production, maybe you can send the exception details to your
+    // email as well ?
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
