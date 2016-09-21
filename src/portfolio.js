@@ -37,17 +37,17 @@ class Portfolio {
 	    fund.data.regions.forEach(function(data) {
 		if (results.regions[data.region] === undefined) {
 		    results.regions[data.region] = {};
-		    results.regions[data.region].percentage = data.percentage * fund.investment/self.total_investment;
+		    results.regions[data.region].percentage = data.percentage * fund.investment / self.total_investment;
 		} else {
-		    results.regions[data.region].percentage += data.percentage * fund.investment/self.total_investment;
+		    results.regions[data.region].percentage += data.percentage * fund.investment / self.total_investment;
 		}
 	    });
 
 	    fund.data.sectors.forEach(function(data) {
 		if (results.sectors[data.sector] === undefined) {
-		    results.sectors[data.sector] = data.percentage * fund.investment/self.total_investment;
+		    results.sectors[data.sector] = data.percentage * fund.investment / self.total_investment;
 		} else {
-		    results.sectors[data.sector] += data.percentage * fund.investment/self.total_investment;
+		    results.sectors[data.sector] += data.percentage * fund.investment / self.total_investment;
 		}
 	    });
 	});
