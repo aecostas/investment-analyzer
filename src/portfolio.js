@@ -2,7 +2,6 @@
 
 var MongoClient = require('mongodb').MongoClient;
 var dburl = 'mongodb://localhost:27017/fundsmanager';
-var assert = require('assert');
 
 /**
  * A portfolio is the list of funds where the investment
@@ -74,12 +73,15 @@ class Portfolio {
 		if (errconnect) {
 		    console.error('Error connection do MongoDB');
 		    console.error(errconnect);
+		    reject();
 		}
 		
 		var collection = db.collection('funds');
 		
 		collection.findOne({isin:isin}, function(err, docs) {
-		    assert.equal(err,null);
+		    if (err) {
+			reject();
+		    }
 		    self.funds[isin] = docs;
 		    db.close();
 		    self.stats = self._calculate();

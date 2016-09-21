@@ -1,18 +1,16 @@
 'use strict';
 
 var MongoClient = require('mongodb').MongoClient;
-var assert = require('assert');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
-var bodyParser = require('body-parser');
-var dburl = 'mongodb://localhost:27017/fundsmanager';
-var locales = require("../locales")
+var dburl = 'mongodb://localhost:27017/fundsmanager-4';
+var locales = require('../locales');
 
-var files = [
-    '../data/mediolanum-1.htm',
-    '../data/mediolanum-2.htm',
-    '../data/mediolanum-3.htm'
+var webfiles = [
+    '../../data/mediolanum-1.htm',
+    '../../data/mediolanum-2.htm',
+    '../../data/mediolanum-3.htm',
 ];
 
 var fundsInfo = [];
@@ -31,12 +29,12 @@ function parseListOfFunds(body) {
     let funds = [];
     var $ = cheerio.load(body);
 
-    $("#ctl00_ctl00_MainContent_Layout_1MainContent_gridResult tr").slice(1).each(function() {
+    $('#ctl00_ctl00_MainContent_Layout_1MainContent_gridResult tr').slice(1).each(function() {
 	var children = $(this).children();
 	var fund = {
 	    url: children[1].children[0].attribs.href,
-	    name: children[1].children[0].attribs.title
-	}
+	    name: children[1].children[0].attribs.title,
+	};
 
 	funds.push(fund);
     });
@@ -55,7 +53,7 @@ function parseListOfFunds(body) {
  */
 function getListOfFunds(files) {
     let totalfunds = [];
-    for (let i=0; i<files.length; i++) {
+    for (let i = 0; i < files.length; i++) {
 	let filecontents = fs.readFileSync(files[i], 'utf8');
 	var funds = parseListOfFunds(filecontents);
 	Array.prototype.push.apply(totalfunds, funds);
@@ -74,18 +72,19 @@ function retrieveFundData(url, index, total) {
 
     return new Promise(function(resolve, reject) {
 	request({
-	    uri:url
+	    uri:url,
 	}, function(error, response, body) {
 	    if (error) {
 		console.warn(error);
+		reject(error);
 	    }
 	    
-	    console.warn("[",index,"/",total,"]     ", url);
+	    console.warn('[',index,'/',total,']     ', url);
 
 	    // TODO: handle errors
 	    resolve(body);
-	})
-    })// Promise
+	});
+    });// Promise
 
 }// retrieveFundData
 
@@ -104,39 +103,39 @@ function parseFundBody(fund) {
     info.regions = [];
 
     try{
-	info.name = $(".snapshotTitleBox h1")[0].children[0].data;
+	info.name = $('.snapshotTitleBox h1')[0].children[0].data;
     }catch (err) {
-	console.error("Error parsing name. Continuing...");
+	console.error('Error parsing name. Continuing...');
 	console.error(err);
 	return null;
     }
 
-    info.isin = $(".overviewKeyStatsTable tr").slice(4).children()[2].children[0].data;
+    info.isin = $('.overviewKeyStatsTable tr').slice(4).children()[2].children[0].data;
 
-    $(".overviewTopRegionsTable tr").slice(1).each(function() {
+    $('.overviewTopRegionsTable tr').slice(1).each(function() {
 	var children = $(this).children();
 
 	try {
 	    info.regions.push({
-		"region": locales.getRegionCode(children[0].children[0].data),
-		"percentage": parseFloat(children[1].children[0].data.replace(',','.'))
+		'region': locales.getRegionCode(children[0].children[0].data),
+		'percentage': parseFloat(children[1].children[0].data.replace(',','.')),
 	    });
 	} catch(err) {
-	    console.warn("Error parsing region");
+	    console.warn('Error parsing region');
 	    console.error(err);
 	    info.regions.push({});
 	}
     });
 
-    $(".overviewTopSectorsTable tr").slice(1).each(function() {
+    $('.overviewTopSectorsTable tr').slice(1).each(function() {
 	var children = $(this).children();
 	try {
 	    info.sectors.push({
-		"sector": locales.getSectorCode(children[1].children[0].data),
-		"percentage": parseFloat(children[2].children[0].data.replace(',','.')),
+		'sector': locales.getSectorCode(children[1].children[0].data),
+		'percentage': parseFloat(children[2].children[0].data.replace(',','.')),
 	    });
 	} catch(err) {
-	    console.error("Error parsing sector");
+	    console.error('Error parsing sector');
 	    console.error(err);
 	    info.sectors.push({});
 	}
@@ -145,37 +144,39 @@ function parseFundBody(fund) {
     return info;
 }// parseFundBody
 
-let listOfFunds = getListOfFunds(files);
+let listOfFunds = getListOfFunds(webfiles);
 let listOfPromises = [];
 
 
-for (let i=0; i<listOfFunds.length; i++) {
+for (let i = 0 ; i < listOfFunds.length ; i++) {
     listOfPromises.push(retrieveFundData(listOfFunds[i].url, i, listOfFunds.length));
 }// for
 
 Promise.all(listOfPromises).then(function (fundbodies) {
 
-    for (let i=0; i<fundbodies.length; i++) {
+    for (let i = 0; i < fundbodies.length; i++) {
 	let info = parseFundBody(fundbodies[i]);
 
-	if (info!=null) {
+	if (info != null) {
 	    fundsInfo.push(info);
 	}
     }
 
     MongoClient.connect(dburl, function(err, db) {
 	if (err) {
-	    console.error("Error connection do MongoDB");
+	    console.error('Error connection do MongoDB');
 	    console.error(err);
-	};
+	}
 	
 	var collection = db.collection('funds');
 
-	for (let i=0; i<fundsInfo.length; i++) {
-	    collection.insert(fundsInfo[i], function(err, result) {
-		if (err) {
-		    console.error("Error inserting document in MongoDB");
+	for (let i = 0; i < fundsInfo.length; i++) {
+	    collection.insert(fundsInfo[i], function(errinsert, result) {
+		if (errinsert) {
+		    console.error('Error inserting document in MongoDB');
 		    console.error(err);
+		} else {
+		    console.warn(result);
 		}
 	    });
 	}// for

@@ -1,3 +1,5 @@
+'use strict';
+
 var regionCodes = {};
 var sectorCodes = {};
 
