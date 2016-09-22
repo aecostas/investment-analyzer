@@ -4,8 +4,8 @@ var MongoClient = require('mongodb').MongoClient;
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
-var dburl = 'mongodb://localhost:27017/fundsmanager-4';
-var locales = require('../locales');
+var dburl = 'mongodb://localhost:27017/fundsmanager-4-1';
+var parser = require('./morningStarParser');
 
 var webfiles = [
     '../../data/mediolanum-1.htm',
@@ -89,73 +89,17 @@ function retrieveFundData(url, index, total) {
 }// retrieveFundData
 
 
-/**
- * Parse the body of a fund retrieved from MorningStar
- * 
- * @param {String} fund - Fund body
- * @return {Object} - JSON with name, isin, sectors and  
- *                    regions; null if an error occurs
- */
-function parseFundBody(fund) {
-    var $ = cheerio.load(fund);
-    var info = {};
-    info.sectors = [];
-    info.regions = [];
-
-    try{
-	info.name = $('.snapshotTitleBox h1')[0].children[0].data;
-    }catch (err) {
-	console.error('Error parsing name. Continuing...');
-	console.error(err);
-	return null;
-    }
-
-    info.isin = $('.overviewKeyStatsTable tr').slice(4).children()[2].children[0].data;
-
-    $('.overviewTopRegionsTable tr').slice(1).each(function() {
-	var children = $(this).children();
-
-	try {
-	    info.regions.push({
-		'region': locales.getRegionCode(children[0].children[0].data),
-		'percentage': parseFloat(children[1].children[0].data.replace(',','.')),
-	    });
-	} catch(err) {
-	    console.warn('Error parsing region');
-	    console.error(err);
-	    info.regions.push({});
-	}
-    });
-
-    $('.overviewTopSectorsTable tr').slice(1).each(function() {
-	var children = $(this).children();
-	try {
-	    info.sectors.push({
-		'sector': locales.getSectorCode(children[1].children[0].data),
-		'percentage': parseFloat(children[2].children[0].data.replace(',','.')),
-	    });
-	} catch(err) {
-	    console.error('Error parsing sector');
-	    console.error(err);
-	    info.sectors.push({});
-	}
-    });
-
-    return info;
-}// parseFundBody
-
 let listOfFunds = getListOfFunds(webfiles);
 let listOfPromises = [];
 
-
-for (let i = 0 ; i < listOfFunds.length ; i++) {
+for (let i = 0 ; i < 10 ; i++) {
     listOfPromises.push(retrieveFundData(listOfFunds[i].url, i, listOfFunds.length));
 }// for
 
 Promise.all(listOfPromises).then(function (fundbodies) {
 
     for (let i = 0; i < fundbodies.length; i++) {
-	let info = parseFundBody(fundbodies[i]);
+	let info = parser.parseFundBody(fundbodies[i]);
 
 	if (info != null) {
 	    fundsInfo.push(info);
