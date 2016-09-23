@@ -1,7 +1,6 @@
 'use strict';
 
-var MongoClient = require('mongodb').MongoClient;
-var dburl = 'mongodb://localhost:27017/fundsmanager';
+var database = require('./database');
 
 /**
  * A portfolio is the list of funds where the investment
@@ -24,14 +23,13 @@ class Portfolio {
 	results['sectors'] = {};
 	let keys = Object.keys(this.funds);
 
-
 	// update total investment
 	let temp_total_investment = 0;
  	keys.forEach(function(key) {
 	    temp_total_investment += self.funds[key].investment;
 	});
 	this.total_investment = temp_total_investment;
-	
+
  	keys.forEach(function(key) {
 	    let fund = self.funds[key];
 	    fund.data.regions.forEach(function(data) {
@@ -79,33 +77,23 @@ class Portfolio {
     add(isin, investment) {
 	var self = this;
 	return new Promise(function(resolve, reject) {
-
-	    MongoClient.connect(dburl, function(errconnect, db) {
-		if (errconnect) {
-		    console.error('Error connection do MongoDB');
-		    console.error(errconnect);
+	    database.getFund(isin).then(function(docs){
+		if (docs == null) {
 		    reject();
 		}
-		
-		var collection = db.collection('funds');
-
-		collection.findOne({isin:isin}, function(err, docs) {
-		    if (err) {
-			reject();
-		    }
-		    self.funds[isin] = {};
-		    self.funds[isin].data = docs;
-		    self.funds[isin].investment = investment;
-		    console.dir(self.funds[isin].data.sectors);
-		    db.close();
-		    self.stats = self._calculate();
-		    resolve();
-		});
-		
+		self.funds[isin] = {};
+		self.funds[isin].data = docs;
+		self.funds[isin].investment = investment;
+		self.stats = self._calculate();
+		resolve();
+	    }, function(err){
+		console.error(err);
+		reject();
 	    });
+    
 	});
     }// add
-
+    
 
     /**
      * Returns a summary with the stats calculated
