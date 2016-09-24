@@ -35,18 +35,23 @@ class Portfolio {
 	    fund.data.regions.forEach(function(data) {
 		if (results.regions[data.region] === undefined) {
 		    results.regions[data.region] = {};
-		    results.regions[data.region].percentage = data.percentage * fund.investment / self.total_investment;
+		    results.regions[data.region].investment = data.percentage/100 * fund.investment;
 		} else {
-		    results.regions[data.region].percentage += data.percentage * fund.investment / self.total_investment;
+		    results.regions[data.region].investment += data.percentage/100 * fund.investment;
 		}
+		results.regions[data.region].percentage = (results.regions[data.region].investment / self.total_investment) * 100;
 	    });
 
 	    fund.data.sectors.forEach(function(data) {
+
 		if (results.sectors[data.sector] === undefined) {
-		    results.sectors[data.sector] = data.percentage * fund.investment / self.total_investment;
+		    results.sectors[data.sector] = {}; 
+		    results.sectors[data.sector].investment = data.percentage/100 * fund.investment;
 		} else {
-		    results.sectors[data.sector] += data.percentage * fund.investment / self.total_investment;
+		    results.sectors[data.sector].investment += data.percentage/100 * fund.investment;
 		}
+		results.sectors[data.sector].percentage = (results.sectors[data.sector].investment / self.total_investment) * 100;
+		
 	    });
 	});
 	
@@ -85,7 +90,7 @@ class Portfolio {
 		self.funds[isin].data = docs;
 		self.funds[isin].investment = investment;
 		self.stats = self._calculate();
-		resolve();
+		resolve(docs);
 	    }, function(err){
 		console.error(err);
 		reject();
