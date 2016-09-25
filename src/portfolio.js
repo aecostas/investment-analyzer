@@ -35,9 +35,9 @@ class Portfolio {
 	    fund.data.regions.forEach(function(data) {
 		if (results.regions[data.region] === undefined) {
 		    results.regions[data.region] = {};
-		    results.regions[data.region].investment = data.percentage/100 * fund.investment;
+		    results.regions[data.region].investment = data.percentage / 100 * fund.investment;
 		} else {
-		    results.regions[data.region].investment += data.percentage/100 * fund.investment;
+		    results.regions[data.region].investment += data.percentage / 100 * fund.investment;
 		}
 		results.regions[data.region].percentage = (results.regions[data.region].investment / self.total_investment) * 100;
 	    });
@@ -46,9 +46,9 @@ class Portfolio {
 
 		if (results.sectors[data.sector] === undefined) {
 		    results.sectors[data.sector] = {}; 
-		    results.sectors[data.sector].investment = data.percentage/100 * fund.investment;
+		    results.sectors[data.sector].investment = data.percentage / 100 * fund.investment;
 		} else {
-		    results.sectors[data.sector].investment += data.percentage/100 * fund.investment;
+		    results.sectors[data.sector].investment += data.percentage / 100 * fund.investment;
 		}
 		results.sectors[data.sector].percentage = (results.sectors[data.sector].investment / self.total_investment) * 100;
 		
