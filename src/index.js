@@ -1,19 +1,22 @@
 'use strict';
 
-var Portfolio = require('./portfolio');
+var portfoliomng = require('./portfolio-manager');
+var fundmng = require('./fund-manager');
+var api = require('./api');
 
-var data = new Portfolio();
+api.start();
 
-data.add('IE00B955KM47').then(function() {
-    console.warn('Added fund: IE00B955KM47');
+// data.add('IE00B955KM47', 1000).then(function() {
+//     console.warn('Added fund: IE00B955KM47');
 
-    data.add('IE00B3TB2205').then(function(result) {
-	console.warn('Added fund: IE00B94H8N85 ', result);
-	data.remove('IE00B955KM47');
-	var stats = data.summary();
-	console.warn('Stats: ',stats);
-    });
+//     var stats = data.summary();
+//     console.warn('Stats: ',stats);
+    
+//     //  data.add('IE00B3TB2205', 1000).then(function(result) {
+//     //	console.warn('Added fund: IE00B94H8N85 ', result);
+//     //	data.remove('IE00B955KM47');
+//     //	var stats = data.summary();
+//     //	console.warn('Stats: ',stats);
+//     //  });
 
-});
-
-
+// });

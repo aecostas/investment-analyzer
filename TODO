@@ -1,1 +1,5 @@
 - Portfolio.js shouldn't access directly to database
+
+- Replace object of funds by Map. Easier to calculate total investment
+
+- angular autocomplete: https://github.com/ghiden/angucomplete-alt
