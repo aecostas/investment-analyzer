@@ -1,16 +1,16 @@
 'use strict';
 
 var database = require('./database');
+var uuid = require('node-uuid');
+
 
 /**
- * A portfolio is the list of funds where the investment
- * is performed
- * 
+ * A portfolio is the list of funds with investments
  */
 class Portfolio {
 
     constructor() {
-	this.token = 'aaaaa';
+	this._token = uuid.v4();
 	this.funds = {};
 	this.stats = {};
 	this.total_investment = 0;
@@ -99,7 +99,10 @@ class Portfolio {
 	});
     }// add
     
-
+    get token() {
+	return this._token;
+    }
+    
     /**
      * Returns a summary with the stats calculated
      * for this portfolio
