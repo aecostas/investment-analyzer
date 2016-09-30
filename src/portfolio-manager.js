@@ -30,13 +30,3 @@ app.post('/portfolio/:id/funds/:fundid', function(req, res) {
 app.delete('/portfolio/:id/funds/:fundid', function(req, res) {
     res.send('Hello World!');
 });
-
-
-module.exports = {
-    
-    start: function() {
-	app.listen(3000, function () {
-	    console.log('Example app listening on port 3000!');
-	});
-    },
-};

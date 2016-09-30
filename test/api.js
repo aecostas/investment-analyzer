@@ -8,10 +8,12 @@ var request = require('request');
 // });
 
 
-request.get('http://localhost:3000/fund', function(error, response, body) {
+// request.get('http://localhost:3000/fund', function(error, response, body) {
+//     console.warn("Request done: ", response.statusCode);
+//     console.warn(response.body);
+// });
+
+request.get('http://localhost:3000/fund/IE0004621052ffff', function(error, response, body) {
     console.warn("Request done: ", response.statusCode);
     console.warn(response.body);
 });
-
-
-
