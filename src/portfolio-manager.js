@@ -21,12 +21,27 @@ app.post('/portfolio', function(req, res) {
     res.status(201).send({id:portfolio.token});
 });
 
-app.post('/portfolio/:id/funds/:fundid', function(req, res) {
-    // use app.param /portfolio/:id
-    res.send('Hello World!');
+
+app.param('portfolio_id', function(req, res, next, portfolio_id) {
+    // TODO: consider error
+    req.portfolio = portfolios[portfolio_id];
+    next();
+});
+
+app.post('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
+    req.portfolio.add(req.params.fundid,1000)
+	.then(function() {
+	    res.status(201).send(req.portfolio.summary());
+	})
+	.catch(function(err) {
+	    console.error('Error adding fund to portfolio: ', err);
+	    res.status(500).send();
+	});
 });
 
 
-app.delete('/portfolio/:id/funds/:fundid', function(req, res) {
-    res.send('Hello World!');
+app.delete('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
+    // TODO: status code for remove
+    req.portfolio.remove(req.params.fundid,1000);
+    res.status(201).send(req.portfolio.summary());
 });

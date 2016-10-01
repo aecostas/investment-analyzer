@@ -90,7 +90,7 @@ class Portfolio {
 		self.funds[isin].data = docs;
 		self.funds[isin].investment = investment;
 		self.stats = self._calculate();
-		resolve(docs);
+		resolve();
 	    }, function(err){
 		console.error(err);
 		reject();
