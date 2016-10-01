@@ -54,9 +54,9 @@ class Portfolio {
 		
 	    });
 	});
-	
+
 	return results;
-	
+
     }// _calculate
 
     /**
@@ -95,9 +95,27 @@ class Portfolio {
 		console.error(err);
 		reject();
 	    });
-    
+
 	});
     }// add
+
+    /**
+     * Update the investment of the given fund
+     *
+     * @param {String} isin - ISIN of the fund to update
+     * @param {Number} investment - New amount of money invested
+     *                          in this fund
+     */    
+    update(isin, investment) {
+	// TODO: study the best way to handle errors
+	if (this.funds[isin] == null) {
+	    throw Error(404);
+	}
+
+	this.funds[isin].investment = investment;
+	this.stats = this._calculate();	
+    }
+
     
     get token() {
 	return this._token;

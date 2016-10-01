@@ -79,11 +79,56 @@ describe("Portfolio", function () {
 	    assert.equal(stats.regions['EUROEXEURO'].percentage.toFixed(2), 6.74);
 	    assert.equal(stats.regions['ASIADEVELOPED'].percentage.toFixed(2), 5.29);
 	    done();
+	}).catch(function(err){
+	    console.log(err);
+	});
+		
+    });
+
+    it("Update amount of investment in a fund", function (done) {
+	let portfolio = new Portfolio();
+	let fund1 = portfolio.add('IE00B658BK73', 1000);
+	let fund2 = portfolio.add('IE00B8KGMC91', 500);
+
+	Promise.all([fund1, fund2]).then(result => {
+	    portfolio.update('IE00B8KGMC91', 1000);
+	    let stats = portfolio.summary();
+
+	    assert.equal(stats.sectors['FINANCIAL'].percentage.toFixed(2),15.35 );
+	    assert.equal(stats.sectors['CYCLICALCONSUMER'].percentage.toFixed(2), 12.74);
+	    assert.equal(stats.sectors['DEFENSIVE'].percentage.toFixed(3), 6.355);
+	    assert.equal(stats.sectors['HEALTH'].percentage.toFixed(2), 14.88);
+	    assert.equal(stats.sectors['INDUSTRY'].percentage.toFixed(2), 5.15);
+	    assert.equal(stats.sectors['TECHNOLOGY'].percentage.toFixed(3), 8.645);
+	    assert.equal(stats.sectors['COM'].percentage.toFixed(3), 4.895);	    
 	    
+	    assert.equal(stats.regions['USA'].percentage.toFixed(1), 39.2);
+	    assert.equal(stats.regions['EUROZONE'].percentage.toFixed(3), 25.595);
+	    assert.equal(stats.regions['GB'].percentage.toFixed(0), 12);
+	    assert.equal(stats.regions['EUROEXEURO'].percentage.toFixed(3), 7.335);
+	    assert.equal(stats.regions['ASIADEVELOPED'].percentage.toFixed(3), 2.645);
+	    assert.equal(stats.regions['ASIAEMERGING'].percentage.toFixed(1), 2.3);
+
+	    done();
+	}).catch(function(err){
+	    console.log(err);
 	});
 	
     });
 
+
+    it("Try to update a unexistent fund", function (done) {
+	let portfolio = new Portfolio();
+	portfolio.add('IE00B658BK73', 1000).then(function(result) {
+	    try {
+		portfolio.update('unknown',1000);
+	    } catch(err) {
+		// TODO: check the concrete error
+		done();
+	    }
+	});
+    });
+
 // TODO: try fund without data
-    
+
 });
