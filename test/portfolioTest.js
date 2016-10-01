@@ -1,6 +1,7 @@
 'use strict';
 
 var Portfolio = require('../src/portfolio');
+var NotFoundError = require('../src/error-notfound');
 const assert = require("assert");
 
 describe("Portfolio", function () {
@@ -123,8 +124,9 @@ describe("Portfolio", function () {
 	    try {
 		portfolio.update('unknown',1000);
 	    } catch(err) {
-		// TODO: check the concrete error
-		done();
+		if (err instanceof NotFoundError) {
+		    done();
+		}
 	    }
 	});
     });

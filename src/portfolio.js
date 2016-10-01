@@ -2,7 +2,7 @@
 
 var database = require('./database');
 var uuid = require('node-uuid');
-
+var NotFoundError = require('./error-notfound');
 
 /**
  * A portfolio is the list of funds with investments
@@ -109,7 +109,7 @@ class Portfolio {
     update(isin, investment) {
 	// TODO: study the best way to handle errors
 	if (this.funds[isin] == null) {
-	    throw Error(404);
+	    throw new NotFoundError();
 	}
 
 	this.funds[isin].investment = investment;
