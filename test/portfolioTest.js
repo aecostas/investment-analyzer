@@ -59,7 +59,31 @@ describe("Portfolio", function () {
 	
     });
 
+    it("Adding and removing funds", function (done) {
+	let portfolio = new Portfolio();
+	let fund1 = portfolio.add('IE00B658BK73', 1000);
+	let fund2 = portfolio.add('IE00B8KGMC91', 1000);
+	
+	Promise.all([fund1, fund2]).then(result => {
+	    portfolio.remove('IE00B8KGMC91');
+	    let stats = portfolio.summary();
+	    assert.equal(stats.sectors['FINANCIAL'].percentage.toFixed(2), 15.82);
+	    assert.equal(stats.sectors['CYCLICALCONSUMER'].percentage.toFixed(), 14);
+	    assert.equal(stats.sectors['DEFENSIVE'].percentage.toFixed(2), 12.71);
+	    assert.equal(stats.sectors['HEALTH'].percentage.toFixed(2), 11.09);
+	    assert.equal(stats.sectors['INDUSTRY'].percentage.toFixed(2), 10.3);
+	    
+	    assert.equal(stats.regions['USA'].percentage.toFixed(2), 47.19);
+	    assert.equal(stats.regions['EUROZONE'].percentage.toFixed(2), 14.59);
+	    assert.equal(stats.regions['GB'].percentage.toFixed(1), 14.1);
+	    assert.equal(stats.regions['EUROEXEURO'].percentage.toFixed(2), 6.74);
+	    assert.equal(stats.regions['ASIADEVELOPED'].percentage.toFixed(2), 5.29);
+	    done();
+	    
+	});
+	
+    });
+
 // TODO: try fund without data
-// TODO: try fund with different sectors and regions
     
 });
