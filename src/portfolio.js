@@ -85,14 +85,14 @@ class Portfolio {
 	    database.getFund(isin).then(function(docs){
 		if (docs == null) {
 		    reject();
+		    return;
 		}
 		self.funds[isin] = {};
 		self.funds[isin].data = docs;
 		self.funds[isin].investment = investment;
 		self.stats = self._calculate();
 		resolve();
-	    }, function(err){
-		console.error(err);
+	    }, function(){
 		reject();
 	    });
 
@@ -107,7 +107,6 @@ class Portfolio {
      *                          in this fund
      */    
     update(isin, investment) {
-	// TODO: study the best way to handle errors
 	if (this.funds[isin] == null) {
 	    throw new NotFoundError();
 	}
@@ -116,7 +115,6 @@ class Portfolio {
 	this.stats = this._calculate();	
     }
 
-    
     get token() {
 	return this._token;
     }
