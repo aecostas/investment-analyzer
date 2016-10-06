@@ -48,7 +48,6 @@ app.post('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
 
 
 app.delete('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
-    // TODO: status code for remove
     req.portfolio.remove(req.params.fundid,1000);
-    res.status(201).send(req.portfolio.summary());
+    res.status(200).send(req.portfolio.summary());
 });
