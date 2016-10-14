@@ -25,12 +25,13 @@ app.post('/portfolio', function(req, res) {
 app.param('portfolio_id', function(req, res, next, portfolio_id) {
     // TODO: consider error
     req.portfolio = portfolios[portfolio_id];
+    console.warn("portfolio id: ", portfolio_id);
     next();
 });
 
 app.post('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
     let investment = Number.parseInt(req.body.invest);
-
+    // TODO: portfolio not found (404)
     if (Number.isNaN(investment)) {
 	res.status(400).send({});
 	return;
@@ -41,6 +42,9 @@ app.post('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
 	    res.status(201).send(req.portfolio.summary());
 	})
 	.catch(function(err) {
+	    // TODO:
+	    //   err -> 404 fund not found
+	    //   err -> 500 database error
 	    console.error('Error adding fund to portfolio: ', err);
 	    res.status(500).send();
 	});
@@ -48,6 +52,15 @@ app.post('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
 
 
 app.delete('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
-    req.portfolio.remove(req.params.fundid,1000);
+    //TODO: not found
+    req.portfolio.remove(req.params.fundid);
     res.status(200).send(req.portfolio.summary());
 });
+
+app.patch('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
+    let investment = Number.parseInt(req.body.invest);
+    req.portfolio.update(req.params.fundid, investment);
+    res.status(200).send(req.portfolio.summary());
+});
+
+

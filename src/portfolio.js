@@ -66,6 +66,7 @@ class Portfolio {
      * @param {String} isin - ISIN of the fund to remove
      */    
     remove(isin) {
+	// TODO: check if isin exists
 	delete this.funds[isin];
 	this.stats = this._calculate();
     }
@@ -105,7 +106,7 @@ class Portfolio {
      * @param {String} isin - ISIN of the fund to update
      * @param {Number} investment - New amount of money invested
      *                          in this fund
-     */    
+     */
     update(isin, investment) {
 	if (this.funds[isin] == null) {
 	    throw new NotFoundError();
