@@ -11,6 +11,7 @@ var eslint = require('gulp-eslint');
 var sourcemaps = require('gulp-sourcemaps');
 var browserify = require('browserify');
 var uglify = require('gulp-uglify');
+var mocha = require('gulp-mocha');
 
 var SRC_FILES = ['src/**/*.js', '!**/vendor/**'];
 var TEST_FILES = ['tests/**/*.js'];
@@ -64,30 +65,6 @@ gulp.task('lint:test', function() {
 
 gulp.task('lint', ['lint:src', 'lint:test']);
 
-// Dist
-///////
-
-gulp.task('dist', ['build'], function () {
-	return browserify({
-			entries: './lib/Sippo.js',
-			standalone: 'Sippo',
-			debug: !argv.production,
-		}).bundle()
-		.pipe(source('Sippo.js'))
-		.on('error', function (err) {
-			return notify().write(err);
-		})
-		.pipe(buffer())
-		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(gulpif(argv.production, uglify()))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('./dist'));
-});
-
-gulp.task('dist:clean', function () {
-	return del(['lib', 'dist']);
-});
-
 
 // Documentation
 ////////////////
@@ -107,6 +84,20 @@ gulp.task('doc', function () {
 gulp.task('doc:clean', function() {
 	return del(['doc']);
 });
+
+
+// Tests
+////////////////////
+
+gulp.task('test', function () {
+    gulp.src('test/unit/*.js')
+        .pipe(mocha({
+	    clearRequireCache: true,
+	    ignoreLeaks: true
+	}));
+});
+
+
 
 gulp.task('clean', ['build:clean', 'dist:clean', 'doc:clean']);
 gulp.task('default', ['build']);
