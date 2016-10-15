@@ -1,9 +1,9 @@
 'use strict';
 
-var Portfolio = require('../src/portfolio');
-var NotFoundError = require('../src/error-notfound');
+var Portfolio = require('../../src/portfolio');
+var NotFoundError = require('../../src/error-notfound');
 const assert = require("assert");
-var database = require('../src/database');
+var database = require('../../src/database');
 
 describe("Portfolio", function () {
     let data;

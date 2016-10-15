@@ -13,8 +13,8 @@ var browserify = require('browserify');
 var uglify = require('gulp-uglify');
 var mocha = require('gulp-mocha');
 
-var SRC_FILES = ['src/**/*.js', '!**/vendor/**'];
-var TEST_FILES = ['tests/**/*.js'];
+var SRC_FILES = ['src/**/*.js'];
+var TEST_FILES = ['test/unit/*.js','test/*.js'];
 
 // Build
 ////////
@@ -59,8 +59,7 @@ gulp.task('lint:src', function() {
 gulp.task('lint:test', function() {
     gulp.src(TEST_FILES)
 	.pipe(eslint({fix: true}))
-	.pipe(eslint.format())
-	.pipe(gulpif(isFixed,gulp.dest('tests')));
+	.pipe(eslint.format());
 });
 
 gulp.task('lint', ['lint:src', 'lint:test']);
@@ -98,6 +97,5 @@ gulp.task('test', function () {
 });
 
 
-
 gulp.task('clean', ['build:clean', 'dist:clean', 'doc:clean']);
-gulp.task('default', ['build']);
+gulp.task('default', ['build','lint','test']);
