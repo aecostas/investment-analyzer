@@ -3,6 +3,7 @@
 var Portfolio = require('./portfolio');
 var api = require('./api');
 var NotFoundError = require('./error-notfound');
+var database = require('./database');
 
 var portfolios = {};
 
@@ -37,37 +38,39 @@ app.param('portfolio_id', function(req, res, next, portfolio_id) {
     }
 });
 
-app.post('/portfolio/:portfolio_id/funds/:fundid', function(req, res,  next) {
+app.param('fund_id', function(req, res, next, fund_id) {
+    database.getFund(fund_id).then(function(docs){
+	if (docs == null) {
+	    res.status(404).send('Unknown fund');
+	} else {
+	    req.fund = docs;
+	    next();
+	}
+    });
+});
+    
+app.post('/portfolio/:portfolio_id/funds/:fund_id', function(req, res,  next) {
     let investment = Number.parseInt(req.body.invest);
- 
+
     if (Number.isNaN(investment)) {
 	res.status(400).send({});
 	return;
     }
 
-    req.portfolio.add(req.params.fundid, investment)
-	.then(function() {
-	    res.status(201).send(req.portfolio.summary());
-	})
-	.catch(function(err) {
-	    // TODO:
-	    //   err -> 404 fund not found
-	    //   err -> 500 database error
-	    console.error('Error adding fund to portfolio: ', err);
-	    res.status(500).send();
-	});
+    req.portfolio.add(req.fund, investment);
+    res.status(201).send(req.portfolio.summary());
 });
 
 
-app.delete('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
+app.delete('/portfolio/:portfolio_id/funds/:fund_id', function(req, res) {
     //TODO: not found
-    req.portfolio.remove(req.params.fundid);
+    req.portfolio.remove(req.params.fund_id);
     res.status(200).send(req.portfolio.summary());
 });
 
-app.patch('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
+app.patch('/portfolio/:portfolio_id/funds/:fund_id', function(req, res) {
     let investment = Number.parseInt(req.body.invest);
-    req.portfolio.update(req.params.fundid, investment);
+    req.portfolio.update(req.params.fund_id, investment);
     res.status(200).send(req.portfolio.summary());
 });
 

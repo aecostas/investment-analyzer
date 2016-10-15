@@ -80,24 +80,14 @@ class Portfolio {
      *                          in this fund
      * @return {Promise}
      */
-    add(isin, investment) {
+    add(fund, investment) {
 	var self = this;
-	return new Promise(function(resolve, reject) {
-	    database.getFund(isin).then(function(docs){
-		if (docs == null) {
-		    reject();
-		    return;
-		}
-		self.funds[isin] = {};
-		self.funds[isin].data = docs;
-		self.funds[isin].investment = investment;
-		self.stats = self._calculate();
-		resolve();
-	    }, function(){
-		reject();
-	    });
 
-	});
+	self.funds[fund.isin] = {};
+	self.funds[fund.isin].data = fund;
+	self.funds[fund.isin].investment = investment;
+	self.stats = self._calculate();
+
     }// add
 
     /**
