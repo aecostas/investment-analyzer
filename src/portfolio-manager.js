@@ -2,10 +2,16 @@
 
 var Portfolio = require('./portfolio');
 var api = require('./api');
+var NotFoundError = require('./error-notfound');
+
 var portfolios = {};
 
 var app = api.endpoint();
 
+app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.status(501).send('Something broke!');
+});
 
 app.get('/portfolio/:id', function(req, res) {
     res.send('Hello World!');
@@ -23,15 +29,17 @@ app.post('/portfolio', function(req, res) {
 
 
 app.param('portfolio_id', function(req, res, next, portfolio_id) {
-    // TODO: consider error
     req.portfolio = portfolios[portfolio_id];
-    console.warn("portfolio id: ", portfolio_id);
-    next();
+    if (req.portfolio === undefined) {
+	res.status(404).send('Unknown portfolio');
+    } else {
+    	next();
+    }
 });
 
-app.post('/portfolio/:portfolio_id/funds/:fundid', function(req, res) {
+app.post('/portfolio/:portfolio_id/funds/:fundid', function(req, res,  next) {
     let investment = Number.parseInt(req.body.invest);
-    // TODO: portfolio not found (404)
+ 
     if (Number.isNaN(investment)) {
 	res.status(400).send({});
 	return;
