@@ -1,6 +1,5 @@
 'use strict';
 
-var database = require('./database');
 var uuid = require('node-uuid');
 var NotFoundError = require('./error-notfound');
 

@@ -2,17 +2,11 @@
 
 var Portfolio = require('./portfolio');
 var api = require('./api');
-var NotFoundError = require('./error-notfound');
 var database = require('./database');
 
 var portfolios = {};
 
 var app = api.endpoint();
-
-app.use(function(err, req, res, next) {
-    console.error(err.stack);
-    res.status(501).send('Something broke!');
-});
 
 app.get('/portfolio/:id', function(req, res) {
     res.send('Hello World!');
@@ -49,7 +43,7 @@ app.param('fund_id', function(req, res, next, fund_id) {
     });
 });
     
-app.post('/portfolio/:portfolio_id/funds/:fund_id', function(req, res,  next) {
+app.post('/portfolio/:portfolio_id/funds/:fund_id', function(req, res) {
     let investment = Number.parseInt(req.body.invest);
 
     if (Number.isNaN(investment)) {
