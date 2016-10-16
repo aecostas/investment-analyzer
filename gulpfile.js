@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var istanbul = require('gulp-istanbul');
 var path = require('path');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
@@ -44,16 +45,10 @@ gulp.task('watch', ['build'], function () {
 
 // Lint
 ///////
-
-function isFixed(file) {
-    return file.eslint != null && file.eslint.fixed;
-}
-
 gulp.task('lint:src', function() {
     gulp.src(SRC_FILES)
 	.pipe(eslint())
 	.pipe(eslint.format())
-	.pipe(gulpif(isFixed,gulp.dest('src')));
 });
 
 gulp.task('lint:test', function() {
@@ -88,14 +83,21 @@ gulp.task('doc:clean', function() {
 // Tests
 ////////////////////
 
-gulp.task('test', function () {
-    gulp.src('test/unit/*.js')
-        .pipe(mocha({
-	    clearRequireCache: true,
-	    ignoreLeaks: true
-	}));
+gulp.task('pre-test', function () {
+    return gulp.src(SRC_FILES)
+    // Covering files
+        .pipe(istanbul())
+    // Force `require` to return covered files
+        .pipe(istanbul.hookRequire());
 });
 
+gulp.task('test', ['pre-test'], function () {
+    gulp.src('test/unit/*.js')
+        .pipe(mocha())
+        .pipe(istanbul.writeReports())
+    // Enforce a coverage of at least 90%
+    //              .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } })))
+});
 
 gulp.task('clean', ['build:clean', 'dist:clean', 'doc:clean']);
 gulp.task('default', ['build','lint','test']);
