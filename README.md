@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/aecostas/investment-analyzer.svg?branch=master)](https://travis-ci.org/aecostas/investment-analyzer)
 
+[![Coverage Status](https://coveralls.io/repos/github/aecostas/investment-analyzer/badge.svg?branch=master)](https://coveralls.io/github/aecostas/investment-analyzer?branch=master)
+
+
 # Investment analyzer
 This project parse morningstar data to analyze the diversification, both sectorial and territorial, of the given funds.
 
