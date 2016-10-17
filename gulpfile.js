@@ -100,6 +100,9 @@ gulp.task('test', ['pre-test'], function () {
 });
 
 gulp.task('coveralls', ['test'], function () {
+    console.warn("process.env.CI: ", process.env.CI);
+    return;
+    
     if (!process.env.CI) {
 	return;
     }
