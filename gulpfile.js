@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var istanbul = require('gulp-istanbul');
+var coveralls = require('gulp-coveralls');
 var path = require('path');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
@@ -19,7 +20,6 @@ var TEST_FILES = ['test/unit/*.js','test/*.js'];
 
 // Build
 ////////
-
 
 gulp.task('build-js', function () {
 	return gulp.src(SRC_FILES)
@@ -99,5 +99,14 @@ gulp.task('test', ['pre-test'], function () {
     //              .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } })))
 });
 
+gulp.task('coveralls', ['test'], function () {
+    if (!process.env.CI) {
+	return;
+    }
+    
+    return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
+        .pipe(coveralls());
+});
+
 gulp.task('clean', ['build:clean', 'dist:clean', 'doc:clean']);
-gulp.task('default', ['build','lint','test']);
+gulp.task('default', ['build','lint','test','coveralls']);

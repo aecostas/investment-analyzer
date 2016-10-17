@@ -24,6 +24,7 @@
       "gulp-plumber": "^1.0.1",
       "gulp-sourcemaps": "^1.5.2",
       "gulp-uglify": "^1.2.0",
+      "gulp-coveralls": "0.1.4",
       "htmlparser2": "3.9.0",
       "cheerio": "*",
       "rgb-scale": "0.0.2",
