@@ -11,27 +11,107 @@ describe("Portfolio", function () {
     var fund2;
 
     before(function() {
-
-	return database.getFund('IE00B658BK73').then(function(docs){
-	    if (docs == null) {
-		console.error("test error");
-	    } else {
-		fund1 = docs;
+	fund1 = {};
+	fund1.name = 'Mediolanum BB Coupon Strategy Collection L B';
+	fund1.isin = 'IE00B658BK73';
+	fund1.sectors = [
+	    {
+		"sector" : "FINANCIAL",
+		"percentage" : 15.82
+	    },
+	    {
+		"sector" : "CYCLICALCONSUMER",
+		"percentage" : 14
+	    },
+	    {
+		"sector" : "DEFENSIVE",
+		"percentage" : 12.71
+	    },
+	    {
+		"sector" : "HEALTH",
+		"percentage" : 11.09
+	    },
+	    {
+		"sector" : "INDUSTRY",
+		"percentage" : 10.3
 	    }
-	});
+	];
+
+	fund1.regions = [
+	    {
+		"region" : "USA",
+		"percentage" : 47.19
+	    },
+	    {
+		"region" : "EUROZONE",
+		"percentage" : 14.59
+	    },
+	    {
+		"region" : "GB",
+		"percentage" : 14.1
+	    },
+	    {
+		"region" : "EUROEXEURO",
+		"percentage" : 6.74
+	    },
+	    {
+		"region" : "ASIADEVELOPED",
+		"percentage" : 5.29
+	    }
+	];
 
     });
 
     before(function() {
-
-	return database.getFund('IE00B8KGMC91').then(function(docs){
-	    if (docs == null) {
-		console.error("test error");
-	    } else {
-		fund2 = docs;
+	fund2 = {};
+	fund2.name = 'Mediolanum BB Carmignac Strategic Selection S Class A Units';
+	fund2.isin = 'IE00B8KGMC91';
+	fund2.sectors = [
+	    {
+		"sector" : "HEALTH",
+		"percentage" : 18.67
+	    },
+	    {
+		"sector" : "TECHNOLOGY",
+		"percentage" : 17.29
+	    },
+	    {
+		"sector" : "FINANCIAL",
+		"percentage" : 14.88
+	    },
+	    {
+		"sector" : "CYCLICALCONSUMER",
+		"percentage" : 11.48
+	    },
+	    {
+		"sector" : "COM",
+		"percentage" : 9.79
 	    }
-	});
+	];
 
+	fund2.regions = [
+	    {
+		"region" : "EUROZONE",
+		"percentage" : 36.6
+	    },
+	    {
+		"region" : "USA",
+		"percentage" : 31.21
+	    },
+	    {
+		"region" : "GB",
+		"percentage" : 9.9
+	    },
+	    {
+		"region" : "EUROEXEURO",
+		"percentage" : 7.93
+	    },
+	    {
+		"region" : "ASIAEMERGING",
+		"percentage" : 4.6
+	    }
+	];
+	
     });
 
     
