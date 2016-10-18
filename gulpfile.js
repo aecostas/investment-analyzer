@@ -100,16 +100,13 @@ gulp.task('test', ['pre-test'], function () {
 });
 
 gulp.task('coveralls', ['test'], function () {
-    console.warn("process.env.CI: ", process.env.CI);
-    return;
-    
     if (!process.env.CI) {
 	return;
     }
-    
+
     return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
         .pipe(coveralls());
 });
 
 gulp.task('clean', ['build:clean', 'dist:clean', 'doc:clean']);
-gulp.task('default', ['build','lint','test','coveralls']);
+gulp.task('default', ['build','lint','test']);

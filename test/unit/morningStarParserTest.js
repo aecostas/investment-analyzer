@@ -1,13 +1,13 @@
 'use strict';
 
 var fs = require('fs')
-var parser = require('../src/utils/morningStarParser');
+var parser = require('../../src/utils/morningStarParser');
 const assert = require("assert");
 
 describe("Parsing morningStar fund", function () {
     let data;
     before(function() {
-	let fundbody = fs.readFileSync('fund.html', {encoding:'utf-8'});
+	let fundbody = fs.readFileSync('test/unit/fund.html', {encoding:'utf-8'});
 	data = parser.parseFundBody(fundbody);
     });
     
