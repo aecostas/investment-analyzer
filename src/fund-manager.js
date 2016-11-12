@@ -22,8 +22,8 @@ app.get('/fund', function (req, res) {
 	});
 });
 
-app.get('/fund/:funid', function (req, res) {
-    database.getFund(req.params.funid)
+app.get('/fund/:isin', function (req, res) {
+    database.getFund(req.params.isin)
 	.then(function(docs) {
 	    if (docs != null) {
 		res.status(200).send(docs);

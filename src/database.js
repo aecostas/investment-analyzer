@@ -39,11 +39,12 @@ module.exports = {
 		}
 		
 		var collection = db.collection('funds');
-		
-		collection.findOne({isin:isin}, function(err, docs) {
+
+		collection.findOne({isin:isin}, {_id:0,name:1, isin:1, regions:1, sectors:1}, function(err, docs) {
 		    if (err) {
 			reject(err);
 		    }
+
 		    db.close();
 		    resolve(docs);
 		});
